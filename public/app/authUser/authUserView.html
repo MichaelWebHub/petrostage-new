@@ -1,0 +1,90 @@
+<div class="registration">
+    <div class="registration-inner">
+        <div class="registration-inner-animate login-form" ng-if="$ctrl.loginForm">
+            <form class="registration-form" name="loginForm" action="#" method="post" novalidate autocomplete="off">
+
+                <div class="form-row">
+                    <input type="text" class="form-input form-input-email" name="email" autocomplete="off" placeholder="Email" ng-model="$ctrl.loginUser.email" ng-required="true" ng-pattern="/[\w\d\-]{2,25}@\w{2,10}\.\w{2,7}/">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="password" class="form-input form-input-password" name="password" autocomplete="off" placeholder="Password" ng-model="$ctrl.loginUser.password" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <input type="submit" class="form-submit login" value="Log in" ng-disabled="loginForm.$invalid" ng-click="$ctrl.loginAndSwitch($event)">
+                    <div class="preloader" ng-show="$ctrl.preloader">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <p class="switch-to-registration switch-signup" ng-click="$ctrl.switchForm()"> Registration </p>
+                </div>
+
+                <div class="form-row" ng-hide="$ctrl.status">
+                    <p class="alert-message"> {{$ctrl.message}} </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="registration-inner-animate signup-form" ng-if="!$ctrl.loginForm" >
+
+            <form class="registration-form" name="signupForm" action="#" method="post" novalidate autocomplete="off">
+
+                <div class="form-row">
+                    <input type="text" class="form-input form-input-name" name="name" autocomplete="off" placeholder="Name" ng-model="$ctrl.signupUser.name" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <input type="text" class="form-input form-input-university" name="university" autocomplete="off" placeholder="University" ng-model="$ctrl.signupUser.university" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <input type="text" class="form-input form-input-email" name="email" autocomplete="off" placeholder="Email" ng-model="$ctrl.signupUser.email" ng-required="true" ng-pattern="/[\w\d\-]{2,25}@\w{2,10}\.\w{2,7}/">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="password" class="form-input form-input-password" name="password" autocomplete="off" placeholder="Password" ng-model="$ctrl.signupUser.password" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner"></div>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <input type="submit" class="form-submit signup" value="Register" ng-disabled="signupForm.$invalid" ng-click="$ctrl.signupAndSwitch($event)">
+                    <div class="preloader" ng-show="$ctrl.preloader">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix">
+                    <p class="switch-to-registration switch-login"  ng-click="$ctrl.switchForm()"> Log in  </p>
+                </div>
+
+                <div class="form-row" ng-hide="$ctrl.status">
+                    <p class="alert-message"> {{$ctrl.message}} </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,662 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    overflow: hidden;
+    background: #ECEFF1;
+}
+
+a {
+    text-decoration: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Registration */
+
+.registration {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, #4587D3, #78AAE5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+}
+
+.registration-inner {
+    width: 340px;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.switch-to-registration {
+    cursor: pointer;
+    text-align: right;
+    color: #78AAE5;
+}
+
+.switch-to-registration:hover {
+    color: #4587D3;
+}
+
+.login-form {
+    height: 300px;
+}
+
+.signup-form {
+    height: 410px;
+}
+
+.registration-inner-animate {
+    width: 100%;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.registration-form {
+    width: 340px;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 10px 10px 50px #4E7DB5;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.form-row {
+    margin-top: 24px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.form-input {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 34px;
+    outline: 0;
+    border: 0;
+    font-size: 16px;
+    padding-left: 10px;
+    color: #607D8B;
+}
+
+.form-input::placeholder {
+    color: #78909C;
+}
+
+.underline {
+    height: 1px;
+    width: 100%;
+    background: #B0BEC5;
+    position: relative;
+}
+
+.underline-inner {
+    height: 100%;
+    width: 100%;
+    background: #607D8B;
+    transform: rotateY(90deg);
+    transition: 0.4s;
+}
+
+.form-input:focus ~ .underline > .underline-inner {
+    transform: rotateY(0deg);
+}
+
+.validation-status {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #efefef;
+    transition: 0.1s;
+}
+
+.form-input.ng-touched.ng-valid ~ .validation-status {
+    background: #AED581;
+}
+
+.form-input.ng-dirty.ng-valid ~ .validation-status {
+    background: #AED581;
+}
+
+.form-input.ng-touched.ng-invalid ~ .validation-status {
+    background: #FF8A65;
+}
+
+.form-submit {
+    float: right;
+    width: 50%;
+    height: 34px;
+    border: 0;
+    outline: 0;
+    border-radius: 4px;
+    background: #78AAE5;
+    box-shadow: 1px 1px 3px #1976D2;
+    text-shadow: 1px 1px 1px #1976D2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.12s;
+}
+
+.form-submit:not([disabled='disabled']):hover {
+    background: #5c98e0;
+}
+
+.form-submit[disabled='disabled'] {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.alert-message {
+    margin-top: 15px;
+    text-align: center;
+    color: #F4511E;
+    cursor: default;
+    transition: 0.15s;
+}
+
+.preloader {
+    float: right;
+    width: 34px;
+    height: 34px;
+    margin-right: 20px;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #ECEFF1;
+    border-top-color: #4587D3;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Client Interface */
+
+.wrapper {
+    max-width: 2000px;
+    min-width: 1024px;
+    margin: 0 auto;
+    transition: 0.3s;
+    background: #ECEFF1;
+    position: relative;
+}
+
+.admin-panel {
+    height: 100vh;
+    width: 20%;
+    min-width: 300px;
+    float: left;
+    background: linear-gradient(to bottom, #4587D3, #78AAE5);
+    transition: 1s ease-out;
+    transform: translateX(-1000px);
+}
+
+.orders-panel {
+    height: 100vh;
+    width: 80%;
+    float: left;
+    transition: 1s ease-out;
+    transform: translateX(2000px);
+}
+
+.admin-panel.enter {
+    transform: translateX(0);
+}
+
+.orders-panel.enter {
+    transform: translateX(0);
+}
+
+.admin-panel-inner {
+    padding: 20px;
+    cursor: default;
+}
+
+.user-card {
+    display: flex;
+}
+
+.user-info {
+    margin-left: 30px;
+    color: #fff;
+}
+
+.user-image {
+    width: 100%;
+}
+
+.user-name {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.user-email,
+.user-credits {
+    font-weight: 500;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.mr-1 {
+    margin-right: 0.5em;
+}
+
+.add-credits {
+    float: right;
+    display: inline-block;
+    padding: 8px 10px;
+    margin-top: 30px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-credits:hover {
+    background: #fff;
+    color: #4587D3;
+    box-shadow: 1px 1px 1px #1976D2;
+}
+
+.orders-top {
+    display: flex;
+    padding: 20px;
+    margin: 0 20px;
+    height: 80px;
+    align-items: center;
+    cursor: default;
+    border-bottom: 1px solid #333;
+}
+
+.order-heading {
+    color: #333;
+}
+
+.add-new-order {
+    width: 80px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid #4E7DB5;
+    cursor: pointer;
+    color: #1976D2;
+    margin-left: 100px;
+    transition: 0.3s;
+}
+
+.add-new-order:hover {
+    background: #4E7DB5;
+    color: white;
+    text-shadow: 1px 1px 1px #4E7DB5;
+}
+
+.new-event-wrapper {
+    position: absolute;
+    overflow-y: auto;
+    top: 0;
+    right: -30%;
+    width: 30%;
+    height: 100%;
+    border-left: 20px solid #ECEFF1;
+    background: linear-gradient(to top, #26A69A, #4DB6AC);
+    transition: 1s ease;
+    color: #fff;
+}
+
+.new-event-wrapper.enter {
+    right: 0;
+}
+
+.new-event-inner {
+    margin: 0 20px;
+}
+
+.new-event-heading {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #fff;
+    height: 80px;
+    cursor: default;
+}
+
+.new-event-form .form-input {
+    background: transparent;
+    color: #fff;
+}
+
+.form-input::placeholder {
+    color: #E0E0E0;
+}
+
+.underline-inner.white-line {
+    background: #fff;
+}
+
+.event-form-description {
+    resize: none;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.event-form-description:focus {
+    height: 155px;
+}
+
+.new-event-form .validation-status {
+    right: 5px;
+}
+
+.form-input.ng-not-empty ~ .underline {
+    background: #fff;
+}
+
+.form-input.ng-touched.ng-invalid ~ .underline {
+    background: #FF8A65;
+}
+
+.form-input.ng-touched.ng-invalid ~ .underline-inner {
+    background: #FF8A65;
+}
+
+.event-form-datefrom {
+
+}
+
+.ui-datepicker {
+    width: 300px;
+    background: #ECEFF1;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.ui-datepicker-header {
+    display: flex;
+}
+
+.ui-datepicker-prev {
+    position: relative;
+    display: inline-block;
+    padding: 7px;
+    text-align: center;
+    width: 30%;
+    order: 1;
+    cursor: pointer;
+    transition: 0.3s;
+    color: transparent;
+}
+.ui-datepicker-next {
+    position: relative;
+    display: inline-block;
+    padding: 7px;
+    text-align: center;
+    width: 30%;
+    order: 3;
+    cursor: pointer;
+    transition: 0.3s;
+    color: transparent;
+}
+
+.ui-datepicker-next span,
+.ui-datepicker-prev span {
+    display: none;
+}
+
+.ui-datepicker-next:after {
+    content: "";
+    display: inline-block;
+    margin-top: 10px;
+    width: 24px;
+    height: 24px;
+    background: url('../img/right.png') no-repeat;
+}
+
+.ui-datepicker-prev:after {
+    content: "";
+    display: inline-block;
+    margin-top: 10px;
+    width: 24px;
+    height: 24px;
+    background: url('../img/left.png') no-repeat;
+}
+
+.ui-datepicker-title {
+    display: inline-block;
+    padding: 7px;
+    text-align: center;
+    width: 40%;
+    order: 2;
+}
+
+.ui-datepicker-next:hover {
+    background: #B0BEC5;
+}
+
+.ui-datepicker-prev:hover {
+    background: #B0BEC5;
+}
+
+.ui-datepicker-calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ui-datepicker-calendar td {
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.ui-datepicker-calendar a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    text-decoration: none;
+    color: #26A69A;
+}
+
+.ui-datepicker-calendar a:hover {
+    background: #26A69A;
+    color: #fff;
+}
+.ui-datepicker-calendar td:hover a {
+
+}
+
+.ui-state-active {
+    background: #26A69A !important;
+    color: #fff !important;
+}
+
+.event-form-type {
+    display: none;
+}
+
+.event-form-type-label {
+    padding: 5px 15px;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.event-form-type-label:nth-of-type(n+2) {
+    border-left: 0;
+}
+
+.event-form-type-label:hover {
+    background: #fff;
+    color: #26A69A;
+}
+
+.event-form-type:checked + .event-form-type-label {
+    background: #fff;
+    color: #26A69A;
+}
+
+.event-form-type-label:nth-of-type(1) {
+    border-radius: 4px 0 0 4px;
+}
+
+.event-form-type-label:nth-of-type(3) {
+    border-radius: 0 4px 4px 0;
+}
+
+.form-submit.add-event {
+    background: transparent;
+    border: 1px solid #fff;
+    margin-bottom: 50px;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.form-submit.add-event:not([disabled='disabled']):hover {
+    background: #fff;
+    color: #26A69A;
+}
+
+.prelaoder.event-preloader {
+    border-color: transparent;
+}
+
+.circle.event-loader {
+    border: 2px solid transparent;
+    border-top: 2px solid #ECEFF1;
+}
+
+.events-main {
+    padding: 20px;
+}
+
+.events-main-inner {
+    display: flex;
+}
+
+.event-card {
+    width: 33.3%;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-card-inner {
+    width: 95%;
+    height: 95%;
+    border-radius: 6px;
+    box-shadow: 1px 1px 5px #9E9E9E;
+    overflow: hidden;
+}
+
+.event-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 6px 6px  0 0;
+    color: #fff;
+    height: 70px;
+}
+
+.event-card-row {
+    margin-top: 20px;
+    padding: 0 20px;
+    color: #232323;
+}
+
+.event-card-row:nth-of-type(1) {
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+.background-forum {
+    background: #78AAE5;
+}
+
+.background-congress {
+    background: #26A69A;
+}
+
+.background-conference {
+    background: #F06292;
+}
+
+.color-forum:hover {
+    color: #78AAE5;
+}
+
+.color-congress:hover {
+    color: #26A69A;
+}
+
+.color-conference:hover {
+    color: #F06292;
+}
+
+.event-links {
+    display: flex;
+    justify-content: right;
+}
+
+.event-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #232323;
+    margin-left: 10px;
+}
+
+.event-link:nth-of-type(1) {
+    margin-left: 0;
+}
+
+.date-space {
+    display: inline-block;
+    width: 40px;
+    margin-right: 5px;
+}
+
+
+

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> PetroStage </title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+
+    <!-- Angular Components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-socket-io/0.7.0/socket.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-animate.min.js"></script>
+
+    <!-- Vendor -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="wrapper clearfix">
+    <ui-view></ui-view>
+</div>
+
+<!-- Angular App -->
+<script src="app/app.js"></script>
+<script src="./app/authUser/authUser.module.js"></script>
+<script src="./app/router/router.module.js"></script>
+
+<!-- Angular Controllers-->
+<script src="./app/clientInterface/clientInterfaceCtrl.js"></script>
+<script src="./app/authUser/authUserCtrl.js"></script>
+<script src="./app/clientInterface/transitionsUI.js"></script>
+<script src="app/socket/socket.module.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+</body>
+</html>
