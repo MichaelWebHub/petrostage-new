@@ -19,7 +19,11 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.toggleMenu = (e) => {
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.toggle('enter');
+    };
 
+    this.closeMenu = (e) => {
+        const eventForm = document.querySelector('.new-event-wrapper');
+        eventForm.classList.remove('enter');
     };
 
     this.validateDate = (er) => {

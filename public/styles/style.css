@@ -254,31 +254,6 @@ a {
     transform: translateX(0);
 }
 
-/**/
-
-.main-content.ng-leave {
-    transition: all 1s;
-}
-
-.main-content.ng-leave .admin-panel {
-    transform: translateX(0);
-}
-
-.main-content.ng-leave .orders-panel{
-    transition: 1s ease-out;
-    transform: translateX(0);
-}
-
-.main-content.ng-leave-active .admin-panel {
-    transform: translateX(-1000px);
-}
-
-.main-content.ng-leave-active .orders-panel {
-    transform: translateX(2000px);
-}
-
-/**/
-
 .admin-panel-inner {
     padding: 20px;
     cursor: default;
@@ -449,6 +424,13 @@ a {
 .new-event-inner {
     margin: 0 20px;
     position: relative;
+}
+
+.close-menu {
+    position: absolute;
+    right: 20px;
+    top: 27px;
+    cursor: pointer;
 }
 
 .new-event-heading {
