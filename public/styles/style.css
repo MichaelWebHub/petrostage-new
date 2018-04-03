@@ -220,7 +220,7 @@ a {
 .admin-panel {
     height: 100vh;
     width: 20%;
-    min-width: 300px;
+    min-width: 220px;
     float: left;
     background: linear-gradient(to bottom, #4587D3, #78AAE5);
     transition: 1s ease-out;
