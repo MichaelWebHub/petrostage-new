@@ -224,7 +224,6 @@ a {
     float: left;
     background: linear-gradient(to bottom, #4587D3, #78AAE5);
     transition: 1s ease-out;
-    transform: translateX(-1000px);
 }
 
 .orders-panel {
@@ -232,16 +231,53 @@ a {
     width: 80%;
     float: left;
     transition: 1s ease-out;
+}
+
+.main-content.ng-enter {
+    transition: all 1s;
+}
+
+.main-content.ng-enter .admin-panel {
+    transform: translateX(-1000px);
+}
+
+.main-content.ng-enter .orders-panel{
+    transition: 1s ease-out;
     transform: translateX(2000px);
 }
 
-.admin-panel.enter {
+.main-content.ng-enter-active .admin-panel {
     transform: translateX(0);
 }
 
-.orders-panel.enter {
+.main-content.ng-enter-active .orders-panel {
     transform: translateX(0);
 }
+
+/**/
+
+.main-content.ng-leave {
+    transition: all 1s;
+}
+
+.main-content.ng-leave .admin-panel {
+    transform: translateX(0);
+}
+
+.main-content.ng-leave .orders-panel{
+    transition: 1s ease-out;
+    transform: translateX(0);
+}
+
+.main-content.ng-leave-active .admin-panel {
+    transform: translateX(-1000px);
+}
+
+.main-content.ng-leave-active .orders-panel {
+    transform: translateX(2000px);
+}
+
+/**/
 
 .admin-panel-inner {
     padding: 20px;
@@ -280,7 +316,30 @@ a {
     margin-right: 0.5em;
 }
 
-.add-credits {
+.navigation {
+    margin-top: 50px;
+}
+.nav-menu {
+    padding: 30px;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin-top: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    margin-left: 6px;
+}
+
+.logout {
     float: right;
     display: inline-block;
     padding: 8px 10px;
@@ -288,10 +347,11 @@ a {
     border: 1px solid #fff;
     border-radius: 4px;
     cursor: pointer;
+    color: #fff;
     transition: 0.3s;
 }
 
-.add-credits:hover {
+.logout:hover {
     background: #fff;
     color: #4587D3;
     box-shadow: 1px 1px 1px #1976D2;
@@ -311,7 +371,7 @@ a {
     color: #333;
 }
 
-.add-new-order {
+.tool-button {
     width: 80px;
     height: 35px;
     display: flex;
@@ -321,11 +381,49 @@ a {
     border: 1px solid #4E7DB5;
     cursor: pointer;
     color: #1976D2;
-    margin-left: 100px;
+    margin-left: 30px;
     transition: 0.3s;
 }
 
-.add-new-order:hover {
+.tool-button:hover {
+    background: #4E7DB5;
+    color: white;
+    text-shadow: 1px 1px 1px #4E7DB5;
+}
+
+/* Filter */
+
+.filter-bar {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.filter {
+    border:0;
+    outline: 0;
+    width: 500px;
+    height: 40px;
+    padding: 10px;
+    background: transparent;
+    font-size: 24px;
+    border-bottom: 1px solid #B0BEC5;
+}
+
+.filter-search {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    border: 1px solid #4E7DB5;
+    cursor: pointer;
+    color: #1976D2;
+    margin-left: 30px;
+    background: transparent;
+    transition: 0.3s;
+    outline: none;
+}
+
+.filter-search:hover {
     background: #4E7DB5;
     color: white;
     text-shadow: 1px 1px 1px #4E7DB5;
@@ -350,6 +448,7 @@ a {
 
 .new-event-inner {
     margin: 0 20px;
+    position: relative;
 }
 
 .new-event-heading {
@@ -571,13 +670,10 @@ a {
     padding: 20px;
 }
 
-.events-main-inner {
-    display: flex;
-}
-
 .event-card {
     width: 33.3%;
-    height: 260px;
+    height: 280px;
+    float: left;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -45,11 +45,15 @@ angular.module('AuthUser')
                 })
             },
 
-            isLoggedIn:
-
-                function () {
+            isLoggedIn: function () {
                     return user;
-                }
+                },
+
+            logOut: function() {
+                user = {
+                    status: false
+                };
+            }
         };
 
     });

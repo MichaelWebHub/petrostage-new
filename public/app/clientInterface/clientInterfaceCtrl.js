@@ -46,6 +46,8 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         e.preventDefault();
         this.eventPreloader = true;
 
+        this.eventForm.tags = this.eventForm.tags.split(',');
+        this.eventForm.tags = this.eventForm.tags.map(str => str.trim());
         const event = this.eventForm;
 
         mySocket.emit('addEvent', event);
@@ -56,9 +58,11 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         })
 
-    }
+    };
 
-
+    this.logout = () => {
+        AuthService.logOut();
+    };
 }
 
 app.component('clientInterface', {

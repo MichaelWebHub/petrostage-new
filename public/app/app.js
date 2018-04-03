@@ -5,9 +5,7 @@ const app = angular.module('app', ['Router', 'ngAnimate', 'AuthUser', 'Online'])
 angular.module('app')
     .run(function ($state, $transitions, AuthService, uiService) {
 
-        console.log(AuthService.isLoggedIn());
-
-        $transitions.onStart({to: 'client'}, function (transition) {
+        $transitions.onStart({}, function (transition) {
             if (!AuthService.isLoggedIn().status) {
                 console.log("Denied! Transition to Auth");
                 $state.go('auth');
@@ -18,10 +16,10 @@ angular.module('app')
 
         $transitions.onSuccess({to: 'client'}, function () {
 
-            setTimeout(function() {
-                uiService.showAdminPanel();
-            }, 350)
+        });
 
+        $transitions.onError({}, function (transition) {
+            console.log("Transition from " + transition.from().name + " to " + transition.to().name + " failed. ");
         });
     });
 

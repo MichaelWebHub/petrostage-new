@@ -21,14 +21,6 @@ angular.module('app')
                     }, 1300);
                 });
 
-            },
-
-            showAdminPanel: function () {
-                const admin = document.querySelector('.admin-panel');
-                const orders = document.querySelector('.orders-panel');
-
-                admin.classList.add('enter');
-                orders.classList.add('enter');
             }
         }
 
