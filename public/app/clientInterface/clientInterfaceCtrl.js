@@ -54,9 +54,11 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     });
 
     this.switchCardInterface = (e) => {
-        let activeTab = document.querySelector('.event-button-active');
+        console.log(e.currentTarget.parentElement.nextElementSibling);
+        let activeTab = e.currentTarget.parentElement.querySelector('.event-button-active');
 
-        const long_row = document.querySelector('.event-card-long-row');
+        const long_row = e.currentTarget.parentElement.nextElementSibling;
+
         if (e.currentTarget.getAttribute('data-id') === "info") {
             activeTab.classList.remove('event-button-active');
             activeTab = e.currentTarget;
