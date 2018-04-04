@@ -40,8 +40,10 @@ function authUserCtrl(AuthService) {
         };
 
         //https://serene-thicket-37274.herokuapp.com/login
-        AuthService.signup(body, () => {
-            this.preloader = AuthService.status;
+        AuthService.signup(body, (user) => {
+            this.status = user.status;
+            this.message = user.message;
+            this.preloader = user.status;
         });
     };
 }

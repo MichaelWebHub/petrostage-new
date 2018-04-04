@@ -71,31 +71,44 @@ io.on('connection', function (socket) {
             });
     });
 
-    socket.on('signUp', function(data) {
+    socket.on('signUp', function (data) {
+        console.log(data);
         db()
             .then(() => {
 
-                const user = new User({
-                    name: data.name,
-                    email: data.email,
-                    password: data.password,
-                    university: data.university
-                });
+                User.find({email: data.email}).then((res) => {
 
-                user.save().then(function (newUser) {
-                    console.log("A new user has been added to the database.");
-                    socket.emit('retrieveUserData', {
-                        user: newUser,
-                        status: true,
-                        message: 'You have been registered'
+                    if (data.email === res[0].email) {
+                        socket.emit('retrieveUserData', {
+                            user: {},
+                            status: false,
+                            message: 'User with this email already exists'
+                        })
+                    }
+                })
+                    .catch(() => {
+                        const user = new User({
+                            name: data.name,
+                            email: data.email,
+                            password: data.password,
+                            university: data.university
+                        });
+
+                        user.save().then(function (newUser) {
+                            console.log("A new user has been added to the database.");
+                            socket.emit('retrieveUserData', {
+                                user: newUser,
+                                status: true,
+                                message: 'You have been registered'
+                            })
+                        }).catch(function (err) {
+                            console.log(err.message);
+                        });
                     })
-                }).catch(function (err) {
-                    console.log(err.message);
-                });
             })
     });
 
-    socket.on('getEvents', function() {
+    socket.on('getEvents', function () {
 
         db()
             .then(() => {
@@ -114,7 +127,7 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('addEvent', function(data) {
+    socket.on('addEvent', function (data) {
 
         db()
             .then(() => {
@@ -135,14 +148,13 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('editEvent', function(data) {
+    socket.on('editEvent', function (data) {
 
         db()
             .then(() => {
 
 
                 Event.findOneAndUpdate({_id: ObjectId(data._id)}, data, {new: true}).then(function (newEvent) {
-                    console.log(newEvent);
                     io.emit('retrieveEvent', {
                         event: newEvent,
                         status: true,
@@ -155,19 +167,32 @@ io.on('connection', function (socket) {
 
     });
 
-    socket.on('sendNewComment', function(data) {
+    socket.on('deleteEvent', function (id) {
+
+        db()
+            .then(() => {
+                Event.remove({_id: ObjectId(id)}).then(() => {
+                    console.log('Item deleted');
+                });
+            })
+    });
+
+    socket.on('sendNewComment', function (data) {
 
         const comment = {
             date: data.date,
             author: data.author,
             comment: data.comment
-        }
+        };
 
         db()
             .then(() => {
 
-                Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {comments: comment}}, {safe: true, upsert: true, new: true}).then(function (newEvent) {
-                    console.log(newEvent);
+                Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {comments: comment}}, {
+                    safe: true,
+                    upsert: true,
+                    new: true
+                }).then(function (newEvent) {
                     io.emit('retrieveEvent', {
                         event: newEvent,
                         status: true,

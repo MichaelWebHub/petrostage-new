@@ -33,7 +33,8 @@ angular.module('AuthUser')
 
                 mySocket.on('retrieveUserData', function (data) {
                     user = data;
-                    callback();
+                    console.log(user);
+                    callback(user);
 
                     if (data.status) {
                         // Animated interface switch and state change
@@ -46,10 +47,10 @@ angular.module('AuthUser')
             },
 
             isLoggedIn: function () {
-                    return user;
-                },
+                return user;
+            },
 
-            logOut: function() {
+            logOut: function () {
                 user = {
                     status: false
                 };

@@ -29,10 +29,11 @@
             <div class="filter-block">
                 <form class="filter-bar" ng-submit="$ctrl.filterEvents($ctrl.filter.input)" novalidate>
                     <input type="text" class="filter" ng-model="$ctrl.filter.input">
+                    <span class="new-comment-input-clear" ng-click="$ctrl.filter.input = ''"> <i class="far fa-times-circle"></i> </span>
                     <!--<button class="filter-search"> <i class="fas fa-search"></i> </button>-->
                 </form>
             </div>
-            <div class="tool-button"> Filters </div>
+            <!--<div class="tool-button"> Filters </div>-->
             <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)"> Add </div>
             <div class="tool-button" ng-click="$ctrl.showMyEvents()"> My Events </div>
 
@@ -70,10 +71,10 @@
                                         </div>
                                         <div class="event-card-row">
                                             <div class="event-links">
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.website}}"> Website </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.website" href="{{event.website}}"> Website </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
                                         </div>
                                     </div>
@@ -96,9 +97,9 @@
 
                                             </div>
                                             <div class="new-comment">
-                                                <form class="new-comment-form" name="newCommentForm">
-                                                    <input type="text" class="new-comment-input" max-length="400" ng-required="true">
-                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
+                                                <form class="new-comment-form" name="newCommentForm" novalidate>
+                                                    <input type="text" class="new-comment-input" max-length="400"  ng-required="true">
+                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="$newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
                                                 </form>
                                             </div>
                                         </div>
@@ -126,7 +127,7 @@
             <form class="new-event-form" name="eventFormTag" action="#" method="post" novalidate autocomplete="off">
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-title" name="title" autocomplete="off" placeholder="Title" ng-model="$ctrl.eventForm.title" ng-required="true">
+                    <input type="text" class="form-input event-form-title" name="title" autocomplete="off" placeholder="Title, maximum 100 characters *" ng-model="$ctrl.eventForm.title" ng-maxlength="100" ng-required="true">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -144,7 +145,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-chapter" name="chapter" autocomplete="off" placeholder="Chapter" ng-model="$ctrl.eventForm.chapter" ng-required="true">
+                    <input type="text" class="form-input event-form-chapter" name="chapter" autocomplete="off" placeholder="Chapter *" ng-model="$ctrl.eventForm.chapter" ng-required="true" ng-maxlength="100">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -152,7 +153,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-city" name="city" autocomplete="off" placeholder="City" ng-model="$ctrl.eventForm.city" ng-required="true">
+                    <input type="text" class="form-input event-form-city" name="city" autocomplete="off" placeholder="City *" ng-model="$ctrl.eventForm.city" ng-required="true" ng-maxlength="100">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -160,7 +161,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" id="date-from" class="form-input event-form-datefrom" name="datefrom" autocomplete="off" placeholder="Starting date: dd.mm.yyyy" ng-model="$ctrl.eventForm.dateFrom" ng-required="true">
+                    <input type="text" id="date-from" class="form-input event-form-datefrom" name="datefrom" autocomplete="off" placeholder="Starting date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateFrom" ng-required="true">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -168,7 +169,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" id="date-to" class="form-input event-form-dateto" name="dateto" autocomplete="off" placeholder="Ending date: dd.mm.yyyy" ng-model="$ctrl.eventForm.dateTo" ng-required="true">
+                    <input type="text" id="date-to" class="form-input event-form-dateto" name="dateto" autocomplete="off" placeholder="Ending date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateTo" ng-required="true">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -176,7 +177,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-place" name="place" autocomplete="off" placeholder="Place" ng-model="$ctrl.eventForm.place" ng-required="true">
+                    <input type="text" class="form-input event-form-place" name="place" autocomplete="off" placeholder="Place *" ng-model="$ctrl.eventForm.place" ng-required="true" ng-maxlength="100">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -184,7 +185,7 @@
                 </div>
 
                 <div class="form-row">
-                    <textarea class="form-input event-form-description" name="description" placeholder="Description. 150 - 400 characters" minlength="150" maxlength="400" ng-model="$ctrl.eventForm.description" ng-required="true"></textarea>
+                    <textarea class="form-input event-form-description" name="description" placeholder="Description. 150 - 400 characters *" ng-minlength="150" ng-maxlength="400" ng-model="$ctrl.eventForm.description" ng-required="true"></textarea>
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -192,7 +193,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="email" class="form-input event-form-email" name="email" autocomplete="off" placeholder="Email" ng-model="$ctrl.eventForm.email" ng-required="true">
+                    <input type="email" class="form-input event-form-email" name="email" autocomplete="off" placeholder="Email *" ng-model="$ctrl.eventForm.email" ng-required="true" ng-maxlength="100">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -232,7 +233,7 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-tags" name="tags" autocomplete="off" placeholder="Add tags for this event. Separate by comma" ng-model="$ctrl.eventForm.tags" ng-required="true">
+                    <input type="text" class="form-input event-form-tags" name="tags" autocomplete="off" placeholder="Add tags for this event. Separate by comma *" ng-model="$ctrl.eventForm.tags" ng-required="true">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -247,12 +248,16 @@
                     </div>
                 </div>
 
-                <div class="form-row clearfix">
-                    <input type="submit" class="form-submit event-submit" value="Register Event" ng-show="$ctrl.isEventRegistration" ng-disabled="eventFormTag.$invalid" ng-click="$ctrl.addEvent($event)">
-                    <input type="submit" class="form-submit event-submit" value="Edit Event" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.editEvent($event)">
-                    <div class="preloader event-preloader" ng-show="$ctrl.eventPreloader">
-                        <div class="circle event-loader"></div>
-                    </div>
+                <div class="form-row clearfix form-row-buttons">
+                    <input type="submit" class="form-submit event-submit" name="create" value="Register Event" ng-show="$ctrl.isEventRegistration" ng-disabled="eventFormTag.$invalid" ng-click="$ctrl.addEvent($event)">
+                    <input type="submit" class="form-submit event-submit" name="edit" value="Edit Event" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.editEvent($event)">
+                    <button  class="form-submit event-submit delete-event" name="delete" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.toggleDeleteEvent($event)">
+                        Delete Event
+                        <p class="toggle-delete-buttons">
+                            <span class="delete-event-yes" ng-show="$ctrl.askForDeleteEvent" ng-click="$ctrl.deleteEvent($event)"> Delete </span>
+                            <span class="delete-event-no" ng-show="$ctrl.askForDeleteEvent" ng-click="$ctrl.toggleDeleteEvent($event)"> Cancel </span>
+                        </p>
+                    </button>
                 </div>
 
             </form>

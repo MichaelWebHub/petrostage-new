@@ -6,6 +6,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.eventForm = {};
     this.editEventForm = {};
     this.isEventRegistration = true;
+    this.askForDeleteEvent = false;
 
     const getEvents = () => {
         mySocket.emit('getEvents');
@@ -17,7 +18,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     getEvents();
 
     this.currentUser = AuthService.isLoggedIn().user;
-    this.eventPreloader = false;
 
     /* MENU FUNCTIONS */
 
@@ -35,6 +35,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.closeMenu = () => {
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.remove('enter');
+        this.eventForm = {};
     };
 
     $(function () {
@@ -78,10 +79,10 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         }
     };
 
+    // ADD EVENT
+
     this.addEvent = (e) => {
         e.preventDefault();
-        this.eventPreloader = true;
-
         if (this.eventForm['tags']) {
             this.eventForm.tags = this.eventForm.tags.split(',').map(str => str.trim());
         } else {
@@ -107,13 +108,31 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     };
 
     mySocket.on('retrieveNewEvent', (data) => {
-        this.eventPreloader = false;
         this.events.push(data.event);
     });
 
     this.showMyEvents = () => {
         this.filter.input = this.currentUser.email;
     };
+
+    // DELETE EVENT
+
+    this.toggleDeleteEvent = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.askForDeleteEvent = !this.askForDeleteEvent;
+    };
+
+    this.deleteEvent = (e) => {
+        e.preventDefault();
+
+        const id = this.eventForm._id;
+        mySocket.emit('deleteEvent', id);
+        this.closeMenu();
+        getEvents();
+    };
+
+    // EDIT EVENT
 
     this.toggleEditEvent = (event) => {
         this.eventForm = Object.assign({}, event);
@@ -123,8 +142,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
     this.editEvent = (e) => {
         e.preventDefault();
-
-        this.eventPreloader = true;
 
         const inputs = document.querySelectorAll('.form-input');
 
@@ -155,14 +172,18 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
     };
 
-    this.sendNewComment = (e, event) => {
+    // SEND COMMENT
+
+    this.sendNewComment = (e, event, form) => {
         e.preventDefault();
 
-        const date = new Date().toLocaleString('ru', {year: 'numeric',
+        const date = new Date().toLocaleString('ru', {
+            year: 'numeric',
             month: 'numeric',
-            day: 'numeric',});
+            day: 'numeric',
+        });
 
-        const message = e.currentTarget.previousElementSibling.value;
+        let message = e.currentTarget.previousElementSibling.value;
 
         const comment = {
             id: event._id,
@@ -172,12 +193,13 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         };
 
         mySocket.emit('sendNewComment', comment);
+
+        e.currentTarget.previousElementSibling.value = null;
     };
 
     mySocket.on('retrieveEvent', (data) => {
 
         this.events.forEach((event, index) => {
-            this.eventPreloader = false;
             if (event._id === data.event._id) {
                 this.events[index] = data.event;
             }

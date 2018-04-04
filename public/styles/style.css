@@ -9,8 +9,12 @@
     font-family: 'Lato', sans-serif;
 }
 
+html {
+    width: 100%;
+}
+
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     background: #ECEFF1;
 }
 
@@ -218,6 +222,9 @@ a {
 }
 
 .admin-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 20%;
     min-width: 220px;
@@ -229,30 +236,36 @@ a {
 .orders-panel {
     height: 100vh;
     width: 80%;
+    margin-left: 20%;
     float: left;
     transition: 1s ease-out;
 }
 
 .main-content.ng-enter {
     transition: all 1s;
+    opacity: 0;
 }
 
-.main-content.ng-enter .admin-panel {
-    transform: translateX(-1000px);
+.main-content.ng-enter-active {
+    opacity: 1;
 }
 
-.main-content.ng-enter .orders-panel {
-    transition: 1s ease-out;
-    transform: translateX(2000px);
-}
+/*.main-content.ng-enter .admin-panel {*/
+    /*transform: translateX(-1000px);*/
+/*}*/
 
-.main-content.ng-enter-active .admin-panel {
-    transform: translateX(0);
-}
+/*.main-content.ng-enter .orders-panel {*/
+    /*transition: 1s ease-out;*/
+    /*transform: translateX(2000px);*/
+/*}*/
 
-.main-content.ng-enter-active .orders-panel {
-    transform: translateX(0);
-}
+/*.main-content.ng-enter-active .admin-panel {*/
+    /*transform: translateX(0);*/
+/*}*/
+
+/*.main-content.ng-enter-active .orders-panel {*/
+    /*transform: translateX(0);*/
+/*}*/
 
 .admin-panel-inner {
     padding: 20px;
@@ -348,8 +361,8 @@ a {
 }
 
 .tool-button {
-    width: 80px;
     height: 35px;
+    padding: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -405,6 +418,17 @@ a {
     text-shadow: 1px 1px 1px #4E7DB5;
 }
 
+.new-comment-input-clear {
+    font-size: 1.2em;
+    color: #4E7DB5;
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.new-comment-input-clear:hover {
+    transform: rotate(90deg);
+}
+
 .new-event-wrapper {
     position: absolute;
     overflow-y: auto;
@@ -432,6 +456,11 @@ a {
     right: 20px;
     top: 27px;
     cursor: pointer;
+    transition: 0.6s;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg);
 }
 
 .new-event-heading {
@@ -629,17 +658,63 @@ a {
     border-radius: 0 4px 4px 0;
 }
 
+.form-row-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .form-submit.event-submit {
+    width: 45%;
     background: transparent;
     border: 1px solid #fff;
     margin-bottom: 50px;
     text-shadow: none;
     box-shadow: none;
+    float: none;
 }
 
 .form-submit.event-submit:not([disabled='disabled']):hover {
     background: #fff;
     color: #26A69A;
+}
+
+.form-submit.delete-event {
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-delete-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.delete-event-yes,
+.delete-event-no {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 100%;
+    line-height: 34px;
+    background: #26A69A;
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.delete-event-no {
+    border-left: 1px solid #fff;
+}
+
+.delete-event-no:hover {
+    color: #26A69A;
+    background: #fff;
+}
+
+.delete-event-yes:hover {
+    color: #fff;
+    background: #F4511E;
 }
 
 .prelaoder.event-preloader {
@@ -657,7 +732,8 @@ a {
 
 .event-card {
     width: 33.3%;
-    height: 330px;
+    height: 340px;
+    margin-top: 15px;
     float: left;
     display: flex;
     justify-content: center;
@@ -666,7 +742,7 @@ a {
 
 .event-card-inner {
     width: 95%;
-    height: 320px;
+    height: 330px;
     border-radius: 6px;
     box-shadow: 1px 1px 5px #9E9E9E;
     overflow: hidden;
@@ -677,19 +753,29 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 20px;
+    padding: 5px 20px;
     border-radius: 6px 6px 0 0;
     color: #fff;
-    height: 70px;
+    height: 80px;
+}
+
+.event-title {
+    width: 97%;
 }
 
 .event-edit {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    width: 20px;
+    position: relative;
+    width: 3%;
+    height: 100%;
     cursor: pointer;
     transition: 0.3s;
+}
+
+.event-edit .fa-edit {
+    position: absolute;
+    top: 3px;
+    right: 0;
+
 }
 
 .event-edit:hover {
@@ -729,7 +815,7 @@ a {
 }
 
 .background-forum {
-    background: #78AAE5;
+    background: #4688D3;
 }
 
 .background-congress {
@@ -737,11 +823,11 @@ a {
 }
 
 .background-conference {
-    background: #A1887F;
+    background: #FFA700;
 }
 
 .color-forum:hover {
-    color: #78AAE5;
+    color: #4688D3;
 }
 
 .color-congress:hover {
@@ -749,7 +835,7 @@ a {
 }
 
 .color-conference:hover {
-    color: #A1887F;
+    color: #FFA700;
 }
 
 .event-links {
@@ -797,7 +883,7 @@ a {
 }
 
 .event-button-color-forum:hover {
-    background: #78AAE5;
+    background: #4688D3;
     color: #fff;
 }
 
@@ -807,12 +893,12 @@ a {
 }
 
 .event-button-color-conference:hover {
-    background: #A1887F;
+    background: #FFA700;
     color: #fff;
 }
 
 .event-button-color-forum.event-button-active{
-    background: #78AAE5;
+    background: #4688D3;
     color: #fff;
 }
 
@@ -822,7 +908,7 @@ a {
 }
 
 .event-button-color-conference.event-button-active {
-    background: #A1887F;
+    background: #FFA700;
     color: #fff;
 }
 
@@ -865,14 +951,14 @@ a {
     font-size: 16px;
     vertical-align: top;
     cursor: pointer;
-    background: #607D8B;
+    background: #B0BEC5;
     color: #fff;
     transition: 0.3s;
 }
 
 
 .new-comment-submit:not([disabled='disabled']):hover {
-    background: #546E7A;
+    background: #90A4AE;
 }
 
 .comments-field {
@@ -887,7 +973,6 @@ a {
     border-bottom: 1px solid #B0BEC5;
 }
 
-
 .comment-author {
     display: inline-block;
     vertical-align: top;
@@ -899,4 +984,7 @@ a {
     color: #9E9E9E;
 }
 
+.comment-text {
+    margin-top: 5px;
+}
 
