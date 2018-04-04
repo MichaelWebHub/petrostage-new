@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="151da795-419f-49c6-9be0-49e70282aefe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/database/connection.js" afterPath="$PROJECT_DIR$/database/connection.js" />
-      <change beforePath="$PROJECT_DIR$/public/app/app.js" afterPath="$PROJECT_DIR$/public/app/app.js" />
-      <change beforePath="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceCtrl.js" afterPath="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceCtrl.js" />
-      <change beforePath="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceView.html" afterPath="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceView.html" />
-      <change beforePath="$PROJECT_DIR$/public/styles/style.css" afterPath="$PROJECT_DIR$/public/styles/style.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,12 +38,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="11" />
+              <folding>
+                <marker date="1522874824229" expanded="true" signature="196:525" ph="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connection.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="connection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/connection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -152,12 +149,12 @@
         <option value="$PROJECT_DIR$/public/app/authUser/authUser.module.js" />
         <option value="$PROJECT_DIR$/public/app/authUser/authUserCtrl.js" />
         <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/public/app/app.js" />
         <option value="$PROJECT_DIR$/public/styles/style.css" />
         <option value="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceCtrl.js" />
         <option value="$PROJECT_DIR$/public/app/clientInterface/clientInterfaceView.html" />
         <option value="$PROJECT_DIR$/public/app/socket/socket.module.js" />
         <option value="$PROJECT_DIR$/database/connection.js" />
+        <option value="$PROJECT_DIR$/public/app/app.js" />
       </list>
     </option>
   </component>
@@ -311,12 +308,12 @@
       <workItem from="1522744252607" duration="18737000" />
       <workItem from="1522783260676" duration="9733000" />
       <workItem from="1522822904272" duration="19949000" />
-      <workItem from="1522858799339" duration="15281000" />
+      <workItem from="1522858799339" duration="15341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96078000" />
+    <option name="totallyTimeSpent" value="96138000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -697,14 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/clientInterface/clientInterfaceCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -733,9 +722,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/connection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <marker date="1522874824229" expanded="true" signature="196:525" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
