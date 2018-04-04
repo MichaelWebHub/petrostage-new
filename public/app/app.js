@@ -14,9 +14,6 @@ angular.module('app')
             }
         });
 
-        $transitions.onSuccess({to: 'client'}, function () {
-
-        });
 
         $transitions.onError({}, function (transition) {
             console.log("Transition from " + transition.from().name + " to " + transition.to().name + " failed. ");

@@ -135,4 +135,49 @@ io.on('connection', function (socket) {
 
     });
 
+    socket.on('editEvent', function(data) {
+
+        db()
+            .then(() => {
+
+
+                Event.findOneAndUpdate({_id: ObjectId(data._id)}, data, {new: true}).then(function (newEvent) {
+                    console.log(newEvent);
+                    io.emit('retrieveEvent', {
+                        event: newEvent,
+                        status: true,
+                        message: 'Event has been updated'
+                    })
+                }).catch(function (err) {
+                    console.log(err.message);
+                });
+            })
+
+    });
+
+    socket.on('sendNewComment', function(data) {
+
+        const comment = {
+            date: data.date,
+            author: data.author,
+            comment: data.comment
+        }
+
+        db()
+            .then(() => {
+
+                Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {comments: comment}}, {safe: true, upsert: true, new: true}).then(function (newEvent) {
+                    console.log(newEvent);
+                    io.emit('retrieveEvent', {
+                        event: newEvent,
+                        status: true,
+                        message: 'New comments has been added'
+                    })
+                }).catch(function (err) {
+                    console.log(err.message);
+                });
+            })
+
+    });
+
 });

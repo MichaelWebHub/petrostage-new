@@ -34,42 +34,78 @@
             </div>
             <div class="tool-button"> Filters </div>
             <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)"> Add </div>
+            <div class="tool-button" ng-click="$ctrl.showMyEvents()"> My Events </div>
 
         </div>
         <div class="events-main">
 
             <div class="events-main-inner clearfix">
 
-                <div class="event-card" ng-repeat="event in $ctrl.events | filter: $ctrl.filter.input ">
+                <div class="event-card" ng-repeat="event in $ctrl.events | filter: $ctrl.filter.input track by event._id">
                     <div class="event-card-inner">
                         <div class="event-card-header background-{{event.type.toLowerCase()}}">
                             <h3 class="event-title"> {{event.title}}</h3>
+                            <div class="event-edit" ng-hide="event.creators.indexOf($ctrl.currentUser.email) < 0" ng-click="$ctrl.toggleEditEvent(event)"> <i class="far fa-edit"></i> </div>
                         </div>
-                        <div class="event-card-main">
-                            <div class="event-card-row">
-                                <h4 class="event-place"> {{event.chapter}}, {{event.place}} - {{event.city}}</h4>
-                            </div>
+                        <div class="event-card-main clearfix">
+                            <ul class="event-card-buttons clearfix">
+                                <li class="event-card-button event-card-info-button event-button-color-{{event.type.toLowerCase()}} event-button-active" data-id="info" ng-click="$ctrl.switchCardInterface($event)"> Information </li>
+                                <li class="event-card-button event-card-description-button event-button-color-{{event.type.toLowerCase()}}" data-id="description" ng-click="$ctrl.switchCardInterface($event)"> Description </li>
+                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)"> Comments </li>
+                            </ul>
 
-                            <div class="event-card-row">
-                                <div class="event-start-date"> <strong class="date-space">Start: </strong> {{event.dateFrom}}</div>
-                                <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo}}</div>
-                            </div>
-                            <!--<div class="event-card-row">-->
-                            <!--<div class="event-description">-->
-                            <!--{{event.description}}-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <div class="event-card-row">
-                                <i class="far fa-envelope"></i> {{event.email}}
-                            </div>
-                            <div class="event-card-row">
-                                <div class="event-links">
-                                    <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.website}}"> Website </a>
-                                    <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
-                                    <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
-                                    <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                            <div class="event-card-long-row">
+                                <div class="event-card-long-row-inner clearfix">
+
+                                    <div class="event-card-info">
+                                        <div class="event-card-row">
+                                            <h4 class="event-place"> {{event.chapter}}, {{event.place}} - {{event.city}}</h4>
+                                        </div>
+                                        <div class="event-card-row">
+                                            <div class="event-start-date"> <strong class="date-space">Start: </strong> {{event.dateFrom}}</div>
+                                            <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo}}</div>
+                                        </div>
+                                        <div class="event-card-row">
+                                            <i class="far fa-envelope"></i> {{event.email}}
+                                        </div>
+                                        <div class="event-card-row">
+                                            <div class="event-links">
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.website}}"> Website </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="event-card-description">
+                                        <div class="event-card-description-inner">
+                                            {{event.description}}
+                                        </div>
+                                    </div>
+
+                                    <div class="event-card-comments">
+                                        <div class="event-card-comments-inner">
+                                            <div class="comments-field">
+
+                                                <div class="comment" ng-repeat="comment in event.comments track by comment._id">
+                                                   <p class="comment-author-row"> <h4 class="comment-author">{{comment.author}} </h4> <span class="comment-time"> {{comment.date}}</span> </p>
+                                                    <p class="comment-text"> {{comment.comment}}</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="new-comment">
+                                                <form class="new-comment-form" name="newCommentForm">
+                                                    <input type="text" class="new-comment-input" ng-model="$ctrl.newComment" max-length="400" ng-required="true">
+                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="newCommentForm.$invalid" ng-click="$ctrl.sendNewComment(event)">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -86,7 +122,7 @@
         <div class="close-menu" ng-click="$ctrl.closeMenu($event)"> <i class="far fa-times-circle"></i> </div>
 
         <div class="new-event-form-wrapper">
-            <form class="new-event-form" name="eventForm" action="#" method="post" novalidate autocomplete="off">
+            <form class="new-event-form" name="eventFormTag" action="#" method="post" novalidate autocomplete="off">
 
                 <div class="form-row">
                     <input type="text" class="form-input event-form-title" name="title" autocomplete="off" placeholder="Title" ng-model="$ctrl.eventForm.title" ng-required="true">
@@ -147,7 +183,7 @@
                 </div>
 
                 <div class="form-row">
-                    <textarea class="form-input event-form-description" name="description" placeholder="Description. 100 - 400 characters" minlength="100" maxlength="400" ng-model="$ctrl.eventForm.description" ng-required="true"></textarea>
+                    <textarea class="form-input event-form-description" name="description" placeholder="Description. 150 - 400 characters" minlength="150" maxlength="400" ng-model="$ctrl.eventForm.description" ng-required="true"></textarea>
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -195,7 +231,15 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" class="form-input event-form-tags" name="tags" autocomplete="off" placeholder="Add tags for this event. Separate by comma" ng-model="$ctrl.eventForm.tags" ng-required="false">
+                    <input type="text" class="form-input event-form-tags" name="tags" autocomplete="off" placeholder="Add tags for this event. Separate by comma" ng-model="$ctrl.eventForm.tags" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-creators" name="creators" autocomplete="off" placeholder="Emails of other administrators. Separate by comma" ng-model="$ctrl.eventForm.creators" ng-required="false">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -203,7 +247,8 @@
                 </div>
 
                 <div class="form-row clearfix">
-                    <input type="submit" class="form-submit add-event" value="Register Event" ng-disabled="eventForm.$invalid" ng-click="$ctrl.addEvent($event)">
+                    <input type="submit" class="form-submit event-submit" value="Register Event" ng-show="$ctrl.isEventRegistration" ng-disabled="eventFormTag.$invalid" ng-click="$ctrl.addEvent($event)">
+                    <input type="submit" class="form-submit event-submit" value="Edit Event" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.editEvent($event)">
                     <div class="preloader event-preloader" ng-show="$ctrl.eventPreloader">
                         <div class="circle event-loader"></div>
                     </div>

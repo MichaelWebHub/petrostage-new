@@ -17,8 +17,13 @@ const EventSchema = new Schema({
     vk: String,
     instagram: String,
     tags: {type: Array, default: []},
-    comments: {type: Array, default: []},
-    rating: {type: Number, default: 0}
+    comments: [{
+        date: String,
+        author: String,
+        comment: String
+    }],
+    rating: {type: Number, default: 0},
+    creators: Array
 });
 
 const Event = mongoose.model('event', EventSchema);

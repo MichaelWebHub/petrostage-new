@@ -241,7 +241,7 @@ a {
     transform: translateX(-1000px);
 }
 
-.main-content.ng-enter .orders-panel{
+.main-content.ng-enter .orders-panel {
     transition: 1s ease-out;
     transform: translateX(2000px);
 }
@@ -294,6 +294,7 @@ a {
 .navigation {
     margin-top: 50px;
 }
+
 .nav-menu {
     padding: 30px;
 }
@@ -356,7 +357,7 @@ a {
     border: 1px solid #4E7DB5;
     cursor: pointer;
     color: #1976D2;
-    margin-left: 30px;
+    margin-left: 20px;
     transition: 0.3s;
 }
 
@@ -375,7 +376,7 @@ a {
 }
 
 .filter {
-    border:0;
+    border: 0;
     outline: 0;
     width: 500px;
     height: 40px;
@@ -507,6 +508,7 @@ a {
     transition: 0.3s;
     color: transparent;
 }
+
 .ui-datepicker-next {
     position: relative;
     display: inline-block;
@@ -582,6 +584,7 @@ a {
     background: #26A69A;
     color: #fff;
 }
+
 .ui-datepicker-calendar td:hover a {
 
 }
@@ -626,7 +629,7 @@ a {
     border-radius: 0 4px 4px 0;
 }
 
-.form-submit.add-event {
+.form-submit.event-submit {
     background: transparent;
     border: 1px solid #fff;
     margin-bottom: 50px;
@@ -634,7 +637,7 @@ a {
     box-shadow: none;
 }
 
-.form-submit.add-event:not([disabled='disabled']):hover {
+.form-submit.event-submit:not([disabled='disabled']):hover {
     background: #fff;
     color: #26A69A;
 }
@@ -654,7 +657,7 @@ a {
 
 .event-card {
     width: 33.3%;
-    height: 280px;
+    height: 330px;
     float: left;
     display: flex;
     justify-content: center;
@@ -663,31 +666,66 @@ a {
 
 .event-card-inner {
     width: 95%;
-    height: 95%;
+    height: 320px;
     border-radius: 6px;
     box-shadow: 1px 1px 5px #9E9E9E;
     overflow: hidden;
 }
 
 .event-card-header {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    border-radius: 6px 6px  0 0;
+    padding: 20px 20px;
+    border-radius: 6px 6px 0 0;
     color: #fff;
     height: 70px;
 }
 
+.event-edit {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.event-edit:hover {
+    color: #E0E0E0;
+}
+
+.event-card-long-row {
+    width: 300%;
+    height: 220px;
+    transition: 0.3s;
+}
+
+.event-card-long-row-inner {
+    height: 100%;
+}
+
+.event-card-info,
+.event-card-description,
+.event-card-comments {
+    width: calc(100% / 3);
+    height: 100%;
+    float: left;
+    padding: 20px;
+}
+
+.event-card-description {
+    text-align: justify;
+}
+
 .event-card-row {
     margin-top: 20px;
-    padding: 0 20px;
     color: #232323;
 }
 
 .event-card-row:nth-of-type(1) {
-    margin-top: 10px;
-    padding: 0 20px;
+    margin-top: 0;
 }
 
 .background-forum {
@@ -699,7 +737,7 @@ a {
 }
 
 .background-conference {
-    background: #F06292;
+    background: #A1887F;
 }
 
 .color-forum:hover {
@@ -711,7 +749,7 @@ a {
 }
 
 .color-conference:hover {
-    color: #F06292;
+    color: #A1887F;
 }
 
 .event-links {
@@ -736,5 +774,129 @@ a {
     margin-right: 5px;
 }
 
+.event-card-buttons {
+    height: 30px;
+    font-size: 0;
+    border-bottom: 1px solid #B0BEC5;
+}
+
+.event-card-button {
+    list-style-type: none;
+    display: inline-block;
+    width: calc(100% / 3);
+    height: 100%;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.event-card-button:nth-of-type(n+2) {
+    border-left: 1px solid #B0BEC5;
+}
+
+.event-button-color-forum:hover {
+    background: #78AAE5;
+    color: #fff;
+}
+
+.event-button-color-congress:hover {
+    background: #26A69A;
+    color: #fff;
+}
+
+.event-button-color-conference:hover {
+    background: #A1887F;
+    color: #fff;
+}
+
+.event-button-color-forum.event-button-active{
+    background: #78AAE5;
+    color: #fff;
+}
+
+.event-button-color-congress.event-button-active {
+    background: #26A69A;
+    color: #fff;
+}
+
+.event-button-color-conference.event-button-active {
+    background: #A1887F;
+    color: #fff;
+}
+
+/* COMMENTS */
+
+.event-card-comments {
+    padding: 20px 0 0 0;
+}
+
+.event-card-comments-inner {
+    position: relative;
+}
+
+.new-comment {
+    height: 30px;
+}
+
+.new-comment-form {
+    height: 100%;
+    font-size: 0;
+}
+
+.new-comment-input {
+    width: 80%;
+    height: 100%;
+    padding: 3px 10px;
+    outline: none;
+    border: 0;
+    border-top: 1px solid #B0BEC5;
+    border-left: 1px solid #B0BEC5;
+    font-size: 16px;
+    vertical-align: top;
+}
+
+.new-comment-submit {
+    width: 20%;
+    height: 100%;
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    vertical-align: top;
+    cursor: pointer;
+    background: #607D8B;
+    color: #fff;
+    transition: 0.3s;
+}
+
+
+.new-comment-submit:not([disabled='disabled']):hover {
+    background: #546E7A;
+}
+
+.comments-field {
+    height: 170px;
+    overflow-y: auto;
+    padding-left: 20px;
+}
+
+.comment {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #B0BEC5;
+}
+
+
+.comment-author {
+    display: inline-block;
+    vertical-align: top;
+}
+.comment-time {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+    color: #9E9E9E;
+}
 
 
