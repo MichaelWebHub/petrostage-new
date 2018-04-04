@@ -97,8 +97,8 @@
                                             </div>
                                             <div class="new-comment">
                                                 <form class="new-comment-form" name="newCommentForm">
-                                                    <input type="text" class="new-comment-input" ng-model="$ctrl.newComment" max-length="400" ng-required="true">
-                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="newCommentForm.$invalid" ng-click="$ctrl.sendNewComment(event)">
+                                                    <input type="text" class="new-comment-input" max-length="400" ng-required="true">
+                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
                                                 </form>
                                             </div>
                                         </div>

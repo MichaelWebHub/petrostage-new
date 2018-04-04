@@ -54,7 +54,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     });
 
     this.switchCardInterface = (e) => {
-        console.log(e.currentTarget.parentElement.nextElementSibling);
         let activeTab = e.currentTarget.parentElement.querySelector('.event-button-active');
 
         const long_row = e.currentTarget.parentElement.nextElementSibling;
@@ -165,16 +164,20 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         })
     };
 
-    this.sendNewComment = (event) => {
+    this.sendNewComment = (e, event) => {
+        e.preventDefault();
+
         const date = new Date().toLocaleString('ru', {year: 'numeric',
             month: 'numeric',
             day: 'numeric',});
+
+        const message = e.currentTarget.previousElementSibling.value;
 
         const comment = {
             id: event._id,
             date: date,
             author: this.currentUser.name,
-            comment: this.newComment
+            comment: message
         };
 
         mySocket.emit('sendNewComment', comment);
