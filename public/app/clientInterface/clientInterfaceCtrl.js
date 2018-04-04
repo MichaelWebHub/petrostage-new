@@ -8,6 +8,8 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.isEventRegistration = true;
     this.askForDeleteEvent = false;
 
+    this.currentYear = (new Date()).getFullYear();
+
     const getEvents = () => {
         mySocket.emit('getEvents');
         mySocket.on('retrieveEvents', (events) => {

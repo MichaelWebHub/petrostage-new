@@ -19,6 +19,10 @@
         </nav>
         <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()"> Log out</div>
     </div>
+    <footer class="footer">
+        <p class="copyright"> Copyright {{$ctrl.currentYear}} &copy; PetroStage </p>
+        <p class="me"> Created by <a class="me-link" href="https://vk.com/michaeladze" target="_blank"> Michael Kutateladze</a></p>
+    </footer>
 </div>
 
 <div class="orders-panel">
@@ -71,10 +75,10 @@
                                         </div>
                                         <div class="event-card-row">
                                             <div class="event-links">
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.website" href="{{event.website}}"> Website </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.website" href="{{event.website}}"> Website </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
                                         </div>
                                     </div>
