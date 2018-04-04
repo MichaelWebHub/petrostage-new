@@ -88,7 +88,7 @@
                                         <div class="event-card-comments-inner">
                                             <div class="comments-field">
 
-                                                <div class="comment" ng-repeat="comment in event.comments track by comment._id.$oid">
+                                                <div class="comment" ng-repeat="comment in event.comments track by $index">
                                                     <!-- use $oid for deployment-->
                                                    <p class="comment-author-row"> <h4 class="comment-author">{{comment.author}} </h4> <span class="comment-time"> {{comment.date}}</span> </p>
                                                     <p class="comment-text"> {{comment.comment}}</p>
