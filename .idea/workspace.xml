@@ -20,8 +20,8 @@
       <file leaf-file-name="clientInterfaceView.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/clientInterface/clientInterfaceView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="87" column="79" lean-forward="true" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
+            <state relative-caret-position="280">
+              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -290,12 +290,12 @@
       <workItem from="1522689289747" duration="3079000" />
       <workItem from="1522744252607" duration="18737000" />
       <workItem from="1522783260676" duration="9733000" />
-      <workItem from="1522822904272" duration="17540000" />
+      <workItem from="1522822904272" duration="17690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78388000" />
+    <option name="totallyTimeSpent" value="78538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -705,8 +705,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/clientInterface/clientInterfaceView.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="87" column="79" lean-forward="true" selection-start-line="87" selection-start-column="79" selection-end-line="87" selection-end-column="79" />
+        <state relative-caret-position="280">
+          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
           <folding />
         </state>
       </provider>
