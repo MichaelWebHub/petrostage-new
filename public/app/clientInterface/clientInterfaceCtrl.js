@@ -102,14 +102,12 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         const event = this.eventForm;
 
         mySocket.emit('addEvent', event);
-
-        mySocket.on('retrieveEvent', (data) => {
-            this.eventPreloader = false;
-            this.events.push(data.event);
-
-        })
-
     };
+
+    mySocket.on('retrieveNewEvent', (data) => {
+        this.eventPreloader = false;
+        this.events.push(data.event);
+    })
 
     this.showMyEvents = () => {
         this.filter.input = this.currentUser.email;
@@ -137,8 +135,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         });
 
-        console.log(this.editEventForm);
-
         if (this.editEventForm['tags']) {
             this.editEventForm.tags = this.eventForm.tags.split(',').map(str => str.trim());
         }
@@ -153,15 +149,15 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         mySocket.emit('editEvent', event);
 
-        mySocket.on('retrieveEvent', (data) => {
-
-            this.eventPreloader = false;
-            this.events.forEach((event, index) => {
-                if (event._id === this.editEventForm['_id']) {
-                    this.events[index] = data.event;
-                }
-            });
-        })
+        // mySocket.on('retrieveEditedEvent', (data) => {
+        //
+        //     this.eventPreloader = false;
+        //     this.events.forEach((event, index) => {
+        //         if (event._id === data.event._id) {
+        //             this.events[index] = data.event;
+        //         }
+        //     });
+        // })
     };
 
     this.sendNewComment = (e, event) => {
@@ -182,15 +178,25 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         mySocket.emit('sendNewComment', comment);
 
-        mySocket.on('retrieveEvent', (data) => {
-
-            this.events.forEach((event, index) => {
-                if (event._id === data.event._id) {
-                    this.events[index] = data.event;
-                }
-            });
-        })
+        // mySocket.on('retrieveEvent', (data) => {
+        //
+        //     this.events.forEach((event, index) => {
+        //         if (event._id === data.event._id) {
+        //             this.events[index] = data.event;
+        //         }
+        //     });
+        // })
     };
+
+    mySocket.on('retrieveEvent', (data) => {
+
+        this.events.forEach((event, index) => {
+            this.eventPreloader = false;
+            if (event._id === data.event._id) {
+                this.events[index] = data.event;
+            }
+        });
+    });
 
     this.logout = () => {
         AuthService.logOut();

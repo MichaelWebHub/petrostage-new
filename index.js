@@ -123,7 +123,7 @@ io.on('connection', function (socket) {
 
                 event.save().then(function (newEvent) {
                     console.log("A new event has been added to the database.");
-                    io.emit('retrieveEvent', {
+                    io.emit('retrieveNewEvent', {
                         event: newEvent,
                         status: true,
                         message: 'Event has been registered'
