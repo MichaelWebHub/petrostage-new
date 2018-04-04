@@ -356,6 +356,15 @@ a {
     color: #424242;
 }
 
+.spe-link {
+    color: #fff;
+    transition: 0.12s;
+}
+
+.spe-link:hover {
+    color: #424242;
+}
+
 
 .orders-top {
     display: flex;

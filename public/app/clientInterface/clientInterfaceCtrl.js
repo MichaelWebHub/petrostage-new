@@ -7,6 +7,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.editEventForm = {};
     this.isEventRegistration = true;
     this.askForDeleteEvent = false;
+    this.showEventWrapper = false;
 
     this.currentYear = (new Date()).getFullYear();
 
@@ -32,6 +33,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.openMenu = () => {
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.add('enter');
+        this.showEventWrapper = true;
     };
 
     this.closeMenu = () => {
