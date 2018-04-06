@@ -1203,4 +1203,18 @@ a {
     .event-edit {
         display: none;
     }
+
+    .new-event-wrapper {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .event-card-button {
+        font-size: 13px;
+    }
+
+    .filter {
+        width: 150px;
+    }
 }
