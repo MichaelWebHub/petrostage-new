@@ -1214,7 +1214,13 @@ a {
         font-size: 13px;
     }
 
+    .event-card-description,
+    .event-card-comments {
+        font-size: 13px;
+    }
+
     .filter {
-        width: 150px;
+        width: 130px;
+        font-size: 14px;
     }
 }
