@@ -85,13 +85,13 @@
                                                 <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0">
                                                     <div class="stars-outer">
                                                         <div class="stars-under">
-                                                            <i class="fas fa-star star-border"></i>
-                                                            <i class="fas fa-star star-border"></i>
-                                                            <i class="fas fa-star star-border"></i>
-                                                            <i class="fas fa-star star-border"></i>
-                                                            <i class="fas fa-star star-border"></i>
+                                                            <i class="fas fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </div>
-                                                        <div class="stars-over" style="width: {{(event.rating.sum / event.rating.n)/5)*100}}%">
+                                                        <div class="stars-over" style="width: {{((event.rating.sum / event.rating.n)/5)*100}}%">
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
