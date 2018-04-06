@@ -1024,8 +1024,9 @@ a {
     width: 103px;
 }
 
-.border-star:hover {
+.star-border:hover {
     cursor: pointer;
+    color: #FFA700;
 }
 
 .stars-outer {
