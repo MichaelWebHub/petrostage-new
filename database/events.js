@@ -22,7 +22,11 @@ const EventSchema = new Schema({
         author: String,
         comment: String
     }],
-    rating: {type: Number, default: 0},
+    rating: {
+        usersRated: Array,
+        n: Number,
+        sum: Number
+    },
     creators: Array
 });
 

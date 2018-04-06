@@ -1008,3 +1008,46 @@ a {
     margin-top: 5px;
 }
 
+/* Rating */
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.star-input {
+    display: none;
+}
+
+.rating-form {
+    position: relative;
+    width: 103px;
+}
+
+.border-star:hover {
+    cursor: pointer;
+}
+
+.stars-outer {
+    position: relative;
+    width: 103px;
+}
+
+.stars-under {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #B0BEC5;
+}
+
+.stars-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    color: #FFA700;
+}

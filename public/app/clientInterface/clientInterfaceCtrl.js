@@ -202,7 +202,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     };
 
     mySocket.on('retrieveEvent', (data) => {
-
         this.events.forEach((event, index) => {
             if (event._id === data.event._id) {
                 this.events[index] = data.event;
@@ -213,6 +212,27 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.logout = () => {
         AuthService.logOut();
     };
+
+
+    // Rating interface
+
+    this.rateEvent = (rating, eventId) => {
+
+        const rate = {
+            eventId: eventId,
+            userId: this.currentUser._id,
+            rating: rating,
+            rated: true
+        };
+
+        mySocket.emit('rateEvent', rate);
+
+        mySocket.on('retrieveRatedEvent', (data) => {
+            this.ratedEvents.push(data.event);
+        })
+    };
+
+
 }
 
 app.component('clientInterface', {

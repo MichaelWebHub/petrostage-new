@@ -133,6 +133,9 @@ io.on('connection', function (socket) {
             .then(() => {
 
                 const event = new Event(data);
+                event.rating.rating = 0;
+                event.rating.n = 0;
+                event.rating.sum = 0;
 
                 event.save().then(function (newEvent) {
                     console.log("A new event has been added to the database.");
@@ -189,6 +192,28 @@ io.on('connection', function (socket) {
             .then(() => {
 
                 Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {comments: comment}}, {
+                    safe: true,
+                    upsert: true,
+                    new: true
+                }).then(function (newEvent) {
+                    io.emit('retrieveEvent', {
+                        event: newEvent,
+                        status: true,
+                        message: 'New comments has been added'
+                    })
+                }).catch(function (err) {
+                    console.log(err.message);
+                });
+            })
+
+    });
+
+    socket.on('rateEvent', function (data) {
+
+        db()
+            .then(() => {
+
+                Event.findOneAndUpdate({_id: ObjectId(data.eventId)}, {$push: {'rating.usersRated': data.userId}, $inc: {'rating.n': 1, 'rating.sum': data.rating}}, {
                     safe: true,
                     upsert: true,
                     new: true

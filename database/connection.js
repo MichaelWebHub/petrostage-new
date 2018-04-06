@@ -4,7 +4,7 @@ const db_config = require('../config/database');
 function db() {
     return new Promise(function(resolve, reject) {
 
-        mongoose.connect(db_config.uri);
+        mongoose.connect(db_config.globalUri);
 
         mongoose.connection.once('open', function() {
             resolve("Connection has been made.");
