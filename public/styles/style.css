@@ -1160,6 +1160,18 @@ a {
         width: 100%;
         margin-left: 0;
     }
+
+    .tool-button {
+        display: none;
+    }
+
+    .event-edit {
+        display: none;
+    }
+
+    .new-event-wrapper {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1194,18 +1206,6 @@ a {
 
     .filter {
         width: 300px;
-    }
-
-    .tool-button {
-        display: none;
-    }
-
-    .event-edit {
-        display: none;
-    }
-
-    .new-event-wrapper {
-        display: none;
     }
 }
 
