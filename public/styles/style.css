@@ -1210,6 +1210,17 @@ a {
 }
 
 @media screen and (max-width: 350px) {
+
+    .events-main {
+        padding: 0;
+    }
+
+    .event-card {
+        width: 98%;
+        margin: 15px auto;
+        float: none;
+    }
+
     .event-card-button {
         font-size: 13px;
     }
