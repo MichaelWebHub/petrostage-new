@@ -156,7 +156,6 @@ io.on('connection', function (socket) {
         db()
             .then(() => {
 
-
                 Event.findOneAndUpdate({_id: ObjectId(data._id)}, data, {new: true}).then(function (newEvent) {
                     io.emit('retrieveEvent', {
                         event: newEvent,

@@ -1,5 +1,7 @@
 <div class="admin-panel">
 
+    <h1 class="petrostage"> PetroStage</h1>
+
     <div class="admin-panel-inner">
         <div class="user-card">
             <div class="user-info clearfix">
@@ -57,7 +59,7 @@
                             <ul class="event-card-buttons clearfix">
                                 <li class="event-card-button event-card-info-button event-button-color-{{event.type.toLowerCase()}} event-button-active" data-id="info" ng-click="$ctrl.switchCardInterface($event)"> Information </li>
                                 <li class="event-card-button event-card-description-button event-button-color-{{event.type.toLowerCase()}}" data-id="description" ng-click="$ctrl.switchCardInterface($event)"> Description </li>
-                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)"> Comments </li>
+                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)"> Reviews </li>
                             </ul>
 
                             <div class="event-card-long-row">
@@ -68,8 +70,8 @@
                                             <h4 class="event-place"> {{event.chapter}}, {{event.place}} - {{event.city}}</h4>
                                         </div>
                                         <div class="event-card-row">
-                                            <div class="event-start-date"> <strong class="date-space">Start: </strong> {{event.dateFrom}}</div>
-                                            <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo}}</div>
+                                            <div class="event-start-date"> <strong class="date-space">Start: </strong> {{event.dateFrom }}</div>
+                                            <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo }}</div>
                                         </div>
                                         <div class="event-card-row">
                                             <i class="far fa-envelope"></i> {{event.email}}
@@ -210,7 +212,8 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" id="date-from" class="form-input event-form-datefrom" name="datefrom" autocomplete="off" placeholder="Starting date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateFrom" ng-required="true">
+                    <md-datepicker ng-model="$ctrl.eventForm.dateFrom" name="datefrom" autocomplete="off" md-placeholder="Starting date *" md-max-date="$ctrl.eventForm.dateTo" ng-required="true"></md-datepicker>
+                    <!--<input type="text" id="date-from" class="form-input event-form-datefrom" name="datefrom" autocomplete="off" placeholder="Starting date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateFrom" ng-required="true">-->
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -218,7 +221,8 @@
                 </div>
 
                 <div class="form-row">
-                    <input type="text" id="date-to" class="form-input event-form-dateto" name="dateto" autocomplete="off" placeholder="Ending date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateTo" ng-required="true">
+                    <md-datepicker ng-model="$ctrl.eventForm.dateTo" name="dateto" md-placeholder="Ending date *" md-min-date="$ctrl.eventForm.dateFrom" ng-required="true"></md-datepicker>
+                    <!--<input type="text" id="date-to" class="form-input event-form-dateto" name="dateto" autocomplete="off" placeholder="Ending date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateTo" ng-required="true">-->
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>

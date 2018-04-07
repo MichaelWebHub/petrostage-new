@@ -42,22 +42,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         this.eventForm = {};
     };
 
-    $(function () {
-        $("#date-from").datepicker({
-            dateFormat: "dd.mm.yy",
-            onSelect: function () {
-                that.eventForm.dateFrom = this.value;
-            }
-        });
-
-        $("#date-to").datepicker({
-            dateFormat: "dd.mm.yy",
-            onSelect: function () {
-                that.eventForm.dateTo = this.value;
-            }
-        });
-    });
-
     this.switchCardInterface = (e) => {
         let activeTab = e.currentTarget.parentElement.querySelector('.event-button-active');
 
@@ -104,6 +88,14 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         }
 
 
+        if(this.eventForm['dateFrom']) {
+            this.eventForm.dateFrom = new Date(this.eventForm.dateFrom).toLocaleString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+        }
+
+        if(this.eventForm['dateTo']) {
+            this.eventForm.dateTo = new Date(this.eventForm.dateTo).toLocaleString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+        }
+
         const event = this.eventForm;
 
         mySocket.emit('addEvent', event);
@@ -148,6 +140,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         e.preventDefault();
 
         const inputs = document.querySelectorAll('.form-input');
+        const datepickers = document.querySelectorAll('md-datepicker');
 
         inputs.forEach((input) => {
             if (input.classList.contains('ng-dirty')) {
@@ -155,7 +148,14 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
                 model = model[model.length - 1];
                 this.editEventForm[model] = input.value;
             }
+        });
 
+        datepickers.forEach((input) => {
+            if (input.classList.contains('ng-dirty')) {
+                let model = input.getAttribute('ng-model').split('.');
+                model = model[model.length - 1];
+                this.editEventForm[model] = input.querySelector('.md-datepicker-input').value;
+            }
         });
 
         if (this.editEventForm['tags']) {
@@ -164,6 +164,14 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         if (this.editEventForm['creators']) {
             this.editEventForm.creators = this.eventForm.creators.split(',').map(str => str.trim());
+        }
+
+        if(this.editEventForm['dateFrom']) {
+            this.editEventForm.dateFrom = new Date(this.eventForm.dateFrom).toLocaleString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+        }
+
+        if(this.editEventForm['dateTo']) {
+            this.editEventForm.dateTo = new Date(this.eventForm.dateTo).toLocaleString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
         }
 
         this.editEventForm['_id'] = this.eventForm._id;

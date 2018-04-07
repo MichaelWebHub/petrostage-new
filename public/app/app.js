@@ -1,6 +1,6 @@
 'use strict';
 
-const app = angular.module('app', ['Router', 'ngAnimate', 'AuthUser', 'Online']);
+const app = angular.module('app', ['Router', 'ngAnimate', 'AuthUser', 'Online', 'ngMaterial', 'ngMessages']);
 
 angular.module('app')
     .run(function ($state, $transitions, AuthService, uiService) {
