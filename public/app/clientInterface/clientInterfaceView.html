@@ -7,7 +7,7 @@
             <div class="user-info clearfix" ng-if="$ctrl.currentUserStatus">
                 <p class="user-name"> <span class="name-output"> {{$ctrl.currentUser.name}} </span> </p>
                 <p class="user-email"> <strong class="mr-1">Email: </strong> <span class="email-output"> {{$ctrl.currentUser.email}} </span> </p>
-                <p class="user-university"> <span class="university-output"> {{$ctrl.currentUser.university}} </span> </p>
+                <p class="user-university"> <strong class="mr-1">City: </strong><span class="university-output"> {{$ctrl.currentUser.university}} </span> </p>
             </div>
             <div class="user-info clearfix" ng-if="$ctrl.currentUserStatus === false">
                 <p class="user-name"> <span class="name-output"> Guest </span> </p>
