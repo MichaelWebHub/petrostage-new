@@ -190,7 +190,7 @@ io.on('connection', function (socket) {
         db()
             .then(() => {
 
-                Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {comments: comment}}, {
+                Event.findOneAndUpdate({_id: ObjectId(data.id)}, {$push: {'comments.comments': comment, 'comments.usersCommented': data.userId}}, {
                     safe: true,
                     upsert: true,
                     new: true

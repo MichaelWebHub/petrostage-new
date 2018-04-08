@@ -199,6 +199,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         let message = e.currentTarget.previousElementSibling.value;
 
         const comment = {
+            userId: this.currentUser._id,
             id: event._id,
             date: date,
             author: this.currentUser.name,

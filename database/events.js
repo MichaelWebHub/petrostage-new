@@ -17,11 +17,14 @@ const EventSchema = new Schema({
     vk: String,
     instagram: String,
     tags: {type: Array, default: []},
-    comments: [{
-        date: String,
-        author: String,
-        comment: String
-    }],
+    comments: {
+        usersCommented: Array,
+        comments: [{
+            date: String,
+            author: String,
+            comment: String
+        }]
+    },
     rating: {
         usersRated: Array,
         n: Number,

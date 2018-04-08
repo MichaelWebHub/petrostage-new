@@ -26,14 +26,17 @@
         <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()" ng-if="$ctrl.currentUserStatus"> Log out</div>
     </div>
     <footer class="footer">
-        <p class="copyright"> Copyright {{$ctrl.currentYear}} &copy; PetroStage </p>
+
         <p class="me"> Created by <a class="me-link" href="https://vk.com/michaeladze" target="_blank"> Michael Kutateladze</a></p>
         <p class="spe-chapter"><a class="spe-link" href="http://www.gubkinspe.ru/" target="_blank"> Gubkin SPE Chapter</a></p>
+        <p class="donate"> Support developer <a href="https://www.paypal.me/michaeladze/10eur" target="_blank" class="paypal-link"> <i class="fab fa-cc-paypal"></i> </a> </p>
+        <p class="copyright"> Copyright {{$ctrl.currentYear}} &copy; PetroStage </p>
     </footer>
 </div>
 
 <div class="orders-panel">
     <div class="orders-panel-inner">
+        <h2 class="petrostage-mobile"> PetroStage </h2>
         <div class="orders-top">
             <h2 class="order-heading"> Search:  </h2>
 
@@ -78,14 +81,14 @@
                                             <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo }}</div>
                                         </div>
                                         <div class="event-card-row">
-                                            <i class="far fa-envelope"></i> {{event.email}}
+                                            <i class="far fa-envelope"></i> <span class="event-card-email"> {{event.email}} </span>
                                         </div>
                                         <div class="event-card-row space-between">
                                             <div class="event-links">
                                                 <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.website" href="{{event.website}}"> Website </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
-                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
                                             <div class="ratings">
                                                 <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
@@ -144,14 +147,14 @@
                                         <div class="event-card-comments-inner">
                                             <div class="comments-field">
 
-                                                <div class="comment" ng-repeat="comment in event.comments track by $index">
+                                                <div class="comment" ng-repeat="comment in event.comments.comments track by $index">
                                                     <!-- use $oid for deployment-->
                                                    <p class="comment-author-row"> <h4 class="comment-author">{{comment.author}} </h4> <span class="comment-time"> {{comment.date}}</span> </p>
                                                     <p class="comment-text"> {{comment.comment}}</p>
                                                 </div>
 
                                             </div>
-                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus">
+                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus && event.comments.usersCommented.indexOf($ctrl.currentUser._id) < 0">
                                                 <form class="new-comment-form" name="newCommentForm" novalidate>
                                                     <input type="text" class="new-comment-input" max-length="400"  ng-required="true">
                                                     <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="$newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
