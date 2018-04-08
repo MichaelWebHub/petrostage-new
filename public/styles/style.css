@@ -70,9 +70,16 @@ a {
 
 .switch-to-registration {
     cursor: pointer;
+    float: right;
+    vertical-align: top;
     text-align: right;
     color: #78AAE5;
 }
+.guest-login {
+    color: #aaa;
+    margin-right: 10px;
+}
+
 
 .switch-to-registration:hover {
     color: #4587D3;
@@ -374,8 +381,8 @@ a {
 }
 
 .footer {
-    height: 100px;
-    margin-top: -100px;
+    height: 200px;
+    margin-top: -200px;
     text-align: center;
     color: #fff;
 }

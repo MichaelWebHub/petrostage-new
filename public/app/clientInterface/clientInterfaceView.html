@@ -3,13 +3,17 @@
     <h1 class="petrostage"> PetroStage</h1>
 
     <div class="admin-panel-inner">
-        <div class="user-card">
-            <div class="user-info clearfix">
+        <div class="user-card" >
+            <div class="user-info clearfix" ng-if="$ctrl.currentUserStatus">
                 <p class="user-name"> <span class="name-output"> {{$ctrl.currentUser.name}} </span> </p>
                 <p class="user-email"> <strong class="mr-1">Email: </strong> <span class="email-output"> {{$ctrl.currentUser.email}} </span> </p>
                 <p class="user-university"> <span class="university-output"> {{$ctrl.currentUser.university}} </span> </p>
             </div>
+            <div class="user-info clearfix" ng-if="$ctrl.currentUserStatus === false">
+                <p class="user-name"> <span class="name-output"> Guest </span> </p>
+            </div>
         </div>
+        <div ui-sref="auth" class="logout" ng-if="$ctrl.currentUserStatus === false"> Log in</div>
         <nav class="navigation">
             <ul class="nav-menu">
                 <li class="nav-list"><a href="#" class="nav-link"> Events </a></li>
@@ -19,7 +23,7 @@
                 <li class="nav-list"><a href="#" class="nav-link"> Contacts </a></li>
             </ul>
         </nav>
-        <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()"> Log out</div>
+        <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()" ng-if="$ctrl.currentUserStatus"> Log out</div>
     </div>
     <footer class="footer">
         <p class="copyright"> Copyright {{$ctrl.currentYear}} &copy; PetroStage </p>
@@ -41,8 +45,8 @@
                 </form>
             </div>
             <!--<div class="tool-button"> Filters </div>-->
-            <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)"> Add </div>
-            <div class="tool-button" ng-click="$ctrl.showMyEvents()"> My Events </div>
+            <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)" ng-if="$ctrl.currentUserStatus"> Add </div>
+            <div class="tool-button" ng-click="$ctrl.showMyEvents()" ng-if="$ctrl.currentUserStatus"> My Events </div>
 
         </div>
         <div class="events-main">
@@ -84,7 +88,7 @@
                                                 <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
                                             <div class="ratings">
-                                                <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0">
+                                                <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
                                                     <div class="stars-outer">
                                                         <div class="stars-under">
                                                             <i class="fas fa-star"></i>
@@ -102,7 +106,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0">
+                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus">
                                                     <div class="rating-stars">
                                                         <input type="radio" class="star-input" id="star-1" name="rating">
                                                         <label for="star-1" class="star-label" ng-click="$ctrl.rateEvent(1, event._id)">
@@ -147,7 +151,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="new-comment">
+                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus">
                                                 <form class="new-comment-form" name="newCommentForm" novalidate>
                                                     <input type="text" class="new-comment-input" max-length="400"  ng-required="true">
                                                     <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="$newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
@@ -169,7 +173,7 @@
     </div>
 </div>
 
-<div class="new-event-wrapper">
+<div class="new-event-wrapper" ng-if="$ctrl.currentUserStatus">
     <div class="new-event-inner">
         <h2 class="new-event-heading"> Register new event </h2>
         <div class="close-menu" ng-click="$ctrl.closeMenu($event)"> <i class="far fa-times-circle"></i> </div>

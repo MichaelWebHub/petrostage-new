@@ -30,6 +30,7 @@
 
                 <div class="form-row clearfix">
                     <p class="switch-to-registration switch-signup" ng-click="$ctrl.switchForm()"> Registration </p>
+                    <p class="switch-to-registration guest-login" ng-click="$ctrl.loginAsGuest()"> Continue as guest </p>
                 </div>
 
                 <div class="form-row" ng-hide="$ctrl.status">
@@ -81,6 +82,7 @@
 
                 <div class="form-row clearfix">
                     <p class="switch-to-registration switch-login"  ng-click="$ctrl.switchForm()"> Log in  </p>
+                    <p class="switch-to-registration guest-login" ng-click="$ctrl.loginAsGuest()"> Continue as guest </p>
                 </div>
 
                 <div class="form-row" ng-hide="$ctrl.status">

@@ -20,6 +20,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
     getEvents();
 
+    this.currentUserStatus = AuthService.isLoggedIn().status;
     this.currentUser = AuthService.isLoggedIn().user;
 
     /* MENU FUNCTIONS */

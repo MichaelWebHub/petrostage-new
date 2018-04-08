@@ -10,6 +10,10 @@ function authUserCtrl(AuthService) {
         this.message = "";
     };
 
+    this.loginAsGuest = () => {
+        AuthService.loginAsGuest();
+    };
+
     this.loginAndSwitch = (e) => {
         e.preventDefault();
 

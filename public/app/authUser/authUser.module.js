@@ -28,12 +28,18 @@ angular.module('AuthUser')
 
             },
 
+            loginAsGuest: function() {
+                uiService.hideRegistration()
+                    .then(function () {
+                        $state.go('client');
+                    })
+            },
+
             signup: function (aUser, callback) {
                 mySocket.emit('signUp', aUser);
 
                 mySocket.on('retrieveUserData', function (data) {
                     user = data;
-                    console.log(user);
                     callback(user);
 
                     if (data.status) {
