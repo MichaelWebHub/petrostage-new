@@ -960,7 +960,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     margin-top: 0;
 }
 
-.background-forum {
+.background-forum-conference {
     background: #4688D3;
 }
 
@@ -968,11 +968,11 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     background: #26A69A;
 }
 
-.background-conference {
+.background-forum {
     background: #FFA700;
 }
 
-.color-forum:hover {
+.color-conference:hover {
     color: #4688D3;
 }
 
@@ -980,7 +980,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     color: #26A69A;
 }
 
-.color-conference:hover {
+.color-forum:hover {
     color: #FFA700;
 }
 
@@ -1046,7 +1046,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     border-left: 1px solid #B0BEC5;
 }
 
-.event-button-color-forum:hover {
+.event-button-color-conference:hover {
     background: #4688D3;
     color: #fff;
 }
@@ -1056,12 +1056,12 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     color: #fff;
 }
 
-.event-button-color-conference:hover {
+.event-button-color-forum:hover {
     background: #FFA700;
     color: #fff;
 }
 
-.event-button-color-forum.event-button-active {
+.event-button-color-conference.event-button-active {
     background: #4688D3;
     color: #fff;
 }
@@ -1071,7 +1071,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     color: #fff;
 }
 
-.event-button-color-conference.event-button-active {
+.event-button-color-forum.event-button-active {
     background: #FFA700;
     color: #fff;
 }
