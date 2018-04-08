@@ -246,8 +246,6 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
             this.ratedEvents.push(data.event);
         })
     };
-
-
 }
 
 app.component('clientInterface', {

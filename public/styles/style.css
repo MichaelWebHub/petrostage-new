@@ -35,6 +35,7 @@ a {
     outline: none !important;
 }
 
+
 .clearfix:before,
 .clearfix:after {
     content: '';
@@ -413,13 +414,6 @@ a {
 
 .donate {
     margin: 15px 0;
-}
-
-.paypal-link {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 50px;
-    vertical-align: middle;
 }
 
 .paypal-link {
@@ -1212,6 +1206,10 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .petrostage {
         font-size: 50px;
+    }
+
+    .navigation {
+        margin-top: 0;
     }
 }
 
