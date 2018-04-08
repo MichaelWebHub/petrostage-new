@@ -2,8 +2,8 @@ angular.module('Router', ['ui.router']);
 
 angular.module('Router')
 
-    .config(['$stateProvider',
-        function config($stateProvider) {
+    .config(['$stateProvider', '$locationProvider',
+        function config($stateProvider, $locationProvider) {
 
             $stateProvider
                 .state({
@@ -15,6 +15,10 @@ angular.module('Router')
                     name: 'auth',
                     url: '/auth',
                     template: '<auth-user></auth-user>'
-                })
+                });
+
+            $locationProvider.hashPrefix('');
+            $locationProvider.html5Mode(true);
+
         }
     ]);
