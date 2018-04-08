@@ -90,7 +90,7 @@
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
-                                            <div class="ratings">
+                                            <div class="ratings" ng-if="$ctrl.currentDate >= $ctrl.getEventDate(event)">
                                                 <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
                                                     <div class="stars-outer">
                                                         <div class="stars-under">
@@ -154,7 +154,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus && event.comments.usersCommented.indexOf($ctrl.currentUser._id) < 0">
+                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus && event.comments.usersCommented.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentDate >= $ctrl.getEventDate(event)">
                                                 <form class="new-comment-form" name="newCommentForm" novalidate>
                                                     <input type="text" class="new-comment-input" max-length="400"  ng-required="true">
                                                     <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="$newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
@@ -219,8 +219,15 @@
                 </div>
 
                 <div class="form-row">
+                    <input type="text" class="form-input event-form-place" name="place" autocomplete="off" placeholder="Place *" ng-model="$ctrl.eventForm.place" ng-required="true" ng-maxlength="100">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
                     <md-datepicker ng-model="$ctrl.eventForm.dateFrom" name="datefrom" autocomplete="off" md-placeholder="Starting date *" md-max-date="$ctrl.eventForm.dateTo" ng-required="true"></md-datepicker>
-                    <!--<input type="text" id="date-from" class="form-input event-form-datefrom" name="datefrom" autocomplete="off" placeholder="Starting date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateFrom" ng-required="true">-->
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>
@@ -229,15 +236,6 @@
 
                 <div class="form-row">
                     <md-datepicker ng-model="$ctrl.eventForm.dateTo" name="dateto" md-placeholder="Ending date *" md-min-date="$ctrl.eventForm.dateFrom" ng-required="true"></md-datepicker>
-                    <!--<input type="text" id="date-to" class="form-input event-form-dateto" name="dateto" autocomplete="off" placeholder="Ending date: dd.mm.yyyy *" ng-model="$ctrl.eventForm.dateTo" ng-required="true">-->
-                    <span class="validation-status"></span>
-                    <div class="underline">
-                        <div class="underline-inner white-line"></div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <input type="text" class="form-input event-form-place" name="place" autocomplete="off" placeholder="Place *" ng-model="$ctrl.eventForm.place" ng-required="true" ng-maxlength="100">
                     <span class="validation-status"></span>
                     <div class="underline">
                         <div class="underline-inner white-line"></div>

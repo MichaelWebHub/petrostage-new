@@ -10,6 +10,7 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.showEventWrapper = false;
 
     this.currentYear = (new Date()).getFullYear();
+    this.currentDate = new Date();
 
     const getEvents = () => {
         mySocket.emit('getEvents');
@@ -19,6 +20,10 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     };
 
     getEvents();
+
+    this.getEventDate =(event) => {
+        return new Date(event.dateFrom);
+    };
 
     this.currentUserStatus = AuthService.isLoggedIn().status;
     this.currentUser = AuthService.isLoggedIn().user;
