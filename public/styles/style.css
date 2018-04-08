@@ -461,9 +461,7 @@ a {
 
 /* Filter */
 
-.filter-block {
-    width: calc(100% - 100px);
-}
+
 
 .filter-bar {
     margin-left: 30px;
@@ -474,7 +472,7 @@ a {
 .filter {
     border: 0;
     outline: 0;
-    width: 100%;
+    width: 450px;
     height: 40px;
     padding: 10px;
     background: transparent;
@@ -1332,6 +1330,14 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
         float: none;
         width: 100%;
         margin-left: 0;
+    }
+
+    .filter-block {
+        width: calc(100% - 100px);
+    }
+
+    .filter {
+        width: 100%;
     }
 
     .tool-button {
