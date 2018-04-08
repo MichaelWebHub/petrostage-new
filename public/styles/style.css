@@ -392,8 +392,8 @@ a {
 }
 
 .footer {
-    height: 300px;
-    margin-top: -300px;
+    height: 160px;
+    margin-top: -160px;
     text-align: center;
     color: #fff;
     cursor: default;
@@ -509,7 +509,7 @@ a {
 }
 
 .new-event-wrapper {
-    position: absolute;
+    position: fixed;
     overflow-y: auto;
     top: 0;
     right: -31%;
