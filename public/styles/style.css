@@ -889,7 +889,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
 .event-card {
     width: 33.3%;
-    height: 340px;
+    height: 360px;
     margin-top: 15px;
     float: left;
     display: flex;
@@ -899,7 +899,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
 .event-card-inner {
     width: 95%;
-    height: 330px;
+    height: 350px;
     border-radius: 6px;
     box-shadow: 1px 1px 5px #9E9E9E;
     overflow: hidden;
@@ -1136,7 +1136,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 }
 
 .comments-field {
-    height: 170px;
+    height: 190px;
     overflow-y: auto;
     padding-left: 20px;
 }

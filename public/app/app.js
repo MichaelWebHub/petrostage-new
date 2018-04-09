@@ -3,7 +3,7 @@
 const app = angular.module('app', ['Router', 'ngAnimate', 'AuthUser', 'Online', 'ngMaterial', 'ngMessages']);
 
 angular.module('app')
-    .run(function ($state, $transitions, AuthService, uiService) {
+    .run(function ($state, $stateParams, $transitions, AuthService, uiService) {
 
         $transitions.onStart({to: 'client'}, function (transition) {
             $state.go('client.events');
@@ -14,6 +14,7 @@ angular.module('app')
             //     console.log("Start moving to " + transition.targetState()._identifier);
             // }
         });
+
 
         $transitions.onError({}, function (transition) {
             console.log("Transition from " + transition.from().name + " to " + transition.to().name + " failed. ");

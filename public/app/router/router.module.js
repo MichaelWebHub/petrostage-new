@@ -2,8 +2,8 @@ angular.module('Router', ['ui.router']);
 
 angular.module('Router')
 
-    .config(['$stateProvider', '$locationProvider',
-        function config($stateProvider, $locationProvider) {
+    .config(['$stateProvider', '$locationProvider', '$urlRouterProvider',
+        function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
             $stateProvider
                 .state('auth', {
@@ -23,6 +23,7 @@ angular.module('Router')
                     template: '<about-interface></about-interface>'
                 });
 
+            $urlRouterProvider.otherwise('/');
             $locationProvider.hashPrefix('');
             $locationProvider.html5Mode(true);
 
