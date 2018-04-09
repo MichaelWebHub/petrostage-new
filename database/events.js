@@ -7,6 +7,7 @@ const EventSchema = new Schema({
     type: String,
     chapter: String,
     city: String,
+    timestamp: Date,
     dateFrom: String,
     dateTo: String,
     place: String,

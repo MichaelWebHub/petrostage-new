@@ -1,0 +1,284 @@
+        <h2 class="petrostage-mobile"> PetroStage </h2>
+        <div class="orders-top">
+            <h2 class="order-heading"> Search:  </h2>
+
+            <div class="filter-block">
+                <form class="filter-bar" ng-submit="$ctrl.filterEvents($ctrl.filter.input)" novalidate>
+                    <input type="text" class="filter" ng-model="$ctrl.filter.input">
+                    <span class="new-comment-input-clear" ng-click="$ctrl.filter.input = ''"> <i class="far fa-times-circle"></i> </span>
+                    <!--<button class="filter-search"> <i class="fas fa-search"></i> </button>-->
+                </form>
+            </div>
+            <!--<div class="tool-button"> Filters </div>-->
+            <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)" ng-if="$ctrl.currentUserStatus"> Add </div>
+            <div class="tool-button" ng-click="$ctrl.showMyEvents()" ng-if="$ctrl.currentUserStatus"> My Events </div>
+
+        </div>
+        <div class="events-main">
+
+            <div class="events-main-inner clearfix">
+
+                <div class="event-card" ng-repeat="event in $ctrl.events | orderBy: 'timestamp' | filter: $ctrl.filter.input track by event._id">
+                    <div class="event-card-inner">
+                        <div class="event-card-header background-{{event.type.toLowerCase()}}">
+                            <h3 class="event-title"> {{event.title}}</h3>
+                            <div class="event-edit" ng-hide="event.creators.indexOf($ctrl.currentUser.email) < 0" ng-click="$ctrl.toggleEditEvent(event)"> <i class="far fa-edit"></i> </div>
+                        </div>
+                        <div class="event-card-main clearfix">
+                            <ul class="event-card-buttons clearfix">
+                                <li class="event-card-button event-card-info-button event-button-color-{{event.type.toLowerCase()}} event-button-active" data-id="info" ng-click="$ctrl.switchCardInterface($event)"> Information </li>
+                                <li class="event-card-button event-card-description-button event-button-color-{{event.type.toLowerCase()}}" data-id="description" ng-click="$ctrl.switchCardInterface($event)"> Description </li>
+                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)"> Reviews </li>
+                            </ul>
+
+                            <div class="event-card-long-row">
+                                <div class="event-card-long-row-inner clearfix">
+
+                                    <div class="event-card-info">
+                                        <div class="event-card-row">
+                                            <h4 class="event-place"> {{event.chapter}}, {{event.place}} - {{event.city}}</h4>
+                                        </div>
+                                        <div class="event-card-row">
+                                            <div class="event-start-date"> <strong class="date-space">Start: </strong> {{event.dateFrom }}</div>
+                                            <div class="event-end-date"> <strong class="date-space">End: </strong> {{event.dateTo }}</div>
+                                        </div>
+                                        <div class="event-card-row">
+                                            <i class="far fa-envelope"></i> <span class="event-card-email"> {{event.email}} </span>
+                                        </div>
+                                        <div class="event-card-row space-between">
+                                            <div class="event-links">
+                                                <a class="event-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.website" href="{{event.website}}"> Website </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.facebook" href="{{event.facebook}}"> <i class="fab fa-facebook-f"></i> </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
+                                                <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
+                                            </div>
+                                            <div class="ratings" ng-if="$ctrl.currentDate >= $ctrl.getEventDate(event)">
+                                                <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
+                                                    <div class="stars-outer">
+                                                        <div class="stars-under">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                        <div class="stars-over" style="width: {{((event.rating.sum / event.rating.n)/5)*100}}%">
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                            <i class="fas fa-star"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus">
+                                                    <div class="rating-stars">
+                                                        <input type="radio" class="star-input" id="star-1" name="rating">
+                                                        <label for="star-1" class="star-label" ng-click="$ctrl.rateEvent(1, event._id)">
+                                                            <i class="far fa-star border-star"></i>
+                                                        </label>
+                                                        <input type="radio" class="star-input" id="star-2" name="rating">
+                                                        <label for="star-2" class="star-label" ng-click="$ctrl.rateEvent(2, event._id)">
+                                                            <i class="far fa-star border-star"></i>
+                                                        </label>
+                                                        <input type="radio" class="star-input" id="star-3" name="rating">
+                                                        <label for="star-3" class="star-label" ng-click="$ctrl.rateEvent(3, event._id)">
+                                                            <i class="far fa-star border-star"></i>
+                                                        </label>
+                                                        <input type="radio" class="star-input" id="star-4" name="rating">
+                                                        <label for="star-4" class="star-label" ng-click="$ctrl.rateEvent(4, event._id)">
+                                                            <i class="far fa-star border-star"></i>
+                                                        </label>
+                                                        <input type="radio" class="star-input" id="star-5" name="rating">
+                                                        <label for="star-5" class="star-label" ng-click="$ctrl.rateEvent(5, event._id)">
+                                                            <i class="far fa-star border-star"></i>
+                                                        </label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="event-card-description">
+                                        <div class="event-card-description-inner">
+                                            {{event.description}}
+                                        </div>
+                                    </div>
+
+                                    <div class="event-card-comments">
+                                        <div class="event-card-comments-inner">
+                                            <div class="comments-field">
+
+                                                <div class="comment" ng-repeat="comment in event.comments.comments track by $index">
+                                                    <!-- use $oid for deployment-->
+                                                    <p class="comment-author-row"> <h4 class="comment-author">{{comment.author}} </h4> <span class="comment-time"> {{comment.date}}</span> </p>
+                                                    <p class="comment-text"> {{comment.comment}}</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="new-comment" ng-if="$ctrl.currentUserStatus && event.comments.usersCommented.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentDate >= $ctrl.getEventDate(event)">
+                                                <form class="new-comment-form" name="newCommentForm" novalidate>
+                                                    <input type="text" class="new-comment-input" max-length="400"  ng-required="true">
+                                                    <input type="submit" class="new-comment-submit" value="Send"  ng-disabled="$newCommentForm.$invalid" ng-click="$ctrl.sendNewComment($event, event)">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="new-event-wrapper" ng-if="$ctrl.currentUserStatus">
+    <div class="new-event-inner">
+        <h2 class="new-event-heading"> Register new event </h2>
+        <div class="close-menu" ng-click="$ctrl.closeMenu($event)"> <i class="far fa-times-circle"></i> </div>
+
+        <div class="new-event-form-wrapper">
+            <form class="new-event-form" name="eventFormTag" action="#" method="post" novalidate autocomplete="off">
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-title" name="title" autocomplete="off" placeholder="Title. Max 100 characters *" ng-model="$ctrl.eventForm.title" ng-maxlength="100" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row" style="font-size: 0">
+                    <input type="radio" id="type-forum" class="form-input event-form-type" name="type"  ng-model="$ctrl.eventForm.type" value="Forum" ng-required="true">
+                    <label class="event-form-type-label" for="type-forum">Forum</label>
+                    <input type="radio" id="type-congress" class="form-input event-form-type" name="type"  ng-model="$ctrl.eventForm.type" value="Congress" ng-required="true">
+                    <label class="event-form-type-label" for="type-congress">Congress</label>
+                    <input type="radio" id="type-conference" class="form-input event-form-type" name="type"  ng-model="$ctrl.eventForm.type" value="Conference" ng-required="true">
+                    <label class="event-form-type-label" for="type-conference">Conference</label>
+                    <span class="validation-status"></span>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-chapter" name="chapter" autocomplete="off" placeholder="Chapter *" ng-model="$ctrl.eventForm.chapter" ng-required="true" ng-maxlength="100">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-city" name="city" autocomplete="off" placeholder="City *" ng-model="$ctrl.eventForm.city" ng-required="true" ng-maxlength="100">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-place" name="place" autocomplete="off" placeholder="Place *" ng-model="$ctrl.eventForm.place" ng-required="true" ng-maxlength="100">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <md-datepicker ng-model="$ctrl.eventForm.dateFrom" name="datefrom" autocomplete="off" md-placeholder="Starting date *" md-max-date="$ctrl.eventForm.dateTo" ng-required="true"></md-datepicker>
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <md-datepicker ng-model="$ctrl.eventForm.dateTo" name="dateto" md-placeholder="Ending date *" md-min-date="$ctrl.eventForm.dateFrom" ng-required="true"></md-datepicker>
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <textarea class="form-input event-form-description" name="description" placeholder="Description. 150 - 400 characters *" ng-minlength="150" ng-maxlength="400" ng-model="$ctrl.eventForm.description" ng-required="true"></textarea>
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="email" class="form-input event-form-email" name="email" autocomplete="off" placeholder="Email *" ng-model="$ctrl.eventForm.email" ng-required="true" ng-maxlength="100">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-website" name="website" autocomplete="off" placeholder="Website link" ng-model="$ctrl.eventForm.website" ng-required="false">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-facebook" name="facebook" autocomplete="off" placeholder="Facebook link" ng-model="$ctrl.eventForm.facebook" ng-required="false">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-vk" name="vk" autocomplete="off" placeholder="VK link" ng-model="$ctrl.eventForm.vk" ng-required="false">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-instagram" name="instagram" autocomplete="off" placeholder="Instagram link" ng-model="$ctrl.eventForm.instagram" ng-required="false">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-tags" name="tags" autocomplete="off" placeholder="Add tags for this event. Separate by comma *" ng-model="$ctrl.eventForm.tags" ng-required="true">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <input type="text" class="form-input event-form-creators" name="creators" autocomplete="off" placeholder="Emails of other administrators. Separate by comma" ng-model="$ctrl.eventForm.creators" ng-required="false">
+                    <span class="validation-status"></span>
+                    <div class="underline">
+                        <div class="underline-inner white-line"></div>
+                    </div>
+                </div>
+
+                <div class="form-row clearfix form-row-buttons">
+                    <input type="submit" class="form-submit event-submit" name="create" value="Register Event" ng-show="$ctrl.isEventRegistration" ng-disabled="eventFormTag.$invalid" ng-click="$ctrl.addEvent($event)">
+                    <input type="submit" class="form-submit event-submit" name="edit" value="Edit Event" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.editEvent($event)">
+                    <button  class="form-submit event-submit delete-event" name="delete" ng-hide="$ctrl.isEventRegistration"  ng-click="$ctrl.toggleDeleteEvent($event)">
+                        Delete Event
+                        <p class="toggle-delete-buttons">
+                            <span class="delete-event-yes" ng-show="$ctrl.askForDeleteEvent" ng-click="$ctrl.deleteEvent($event)"> Delete </span>
+                            <span class="delete-event-no" ng-show="$ctrl.askForDeleteEvent" ng-click="$ctrl.toggleDeleteEvent($event)"> Cancel </span>
+                        </p>
+                    </button>
+                </div>
+
+            </form>
+        </div>

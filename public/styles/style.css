@@ -286,6 +286,15 @@ a {
     transition: 1s ease-out;
 }
 
+.orders-panel-inner.ng-enter {
+    transition: all 1s;
+    opacity: 0;
+}
+
+.orders-panel-inner.ng-enter-active {
+    opacity: 1;
+}
+
 .main-content.ng-enter {
     transition: all 1s;
     opacity: 0;
@@ -1197,6 +1206,45 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     overflow: hidden;
     width: 0;
     color: #FFA700;
+}
+
+/* ABOUT */
+
+.about-container {
+    padding: 20px 40px;
+}
+
+.about-inside {
+    cursor: default;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.about-heading {
+    text-align: center;
+    font-family: pantonbold;
+}
+
+.hr-blue {
+    width: 100px;
+    height: 2px;
+    background: #4587D3;
+    margin: 10px auto 0;
+}
+
+.about-p {
+    margin-top: 20px;
+    text-align: justify;
+    font-size: 18px;
+    line-height: 1.5em;
+}
+
+.about-support {
+    color: #4587D3;
+}
+
+.about-link {
+    color: #4587D3;
 }
 
 /* MEDIA */

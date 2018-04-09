@@ -6,15 +6,21 @@ angular.module('Router')
         function config($stateProvider, $locationProvider) {
 
             $stateProvider
-                .state({
-                    name: 'client',
+                .state('auth', {
+                    url: '/auth',
+                    template: '<auth-user></auth-user>'
+                })
+                .state('client', {
                     url: '/',
                     template: '<client-interface></client-interface>'
                 })
-                .state({
-                    name: 'auth',
-                    url: '/auth',
-                    template: '<auth-user></auth-user>'
+                .state('client.events', {
+                    url: 'events',
+                    template: '<events-interface></events-interface>'
+                })
+                .state('client.about', {
+                    url: 'about',
+                    template: '<about-interface></about-interface>'
                 });
 
             $locationProvider.hashPrefix('');

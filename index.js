@@ -1,3 +1,4 @@
+const EventEmitter = require('events');
 const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
@@ -15,6 +16,9 @@ const jsonParser = bodyParser.json();
 
 const server = app.listen(port);
 const io = socket(server);
+
+const emitter = new EventEmitter();
+emitter.setMaxListeners(30);
 
 // Middleware
 
@@ -138,6 +142,7 @@ io.on('connection', function (socket) {
                 event.rating.rating = 0;
                 event.rating.n = 0;
                 event.rating.sum = 0;
+                event.timestamp = new Date(data.dateFrom);
 
                 event.save().then(function (newEvent) {
                     console.log("A new event has been added to the database.");
@@ -157,6 +162,10 @@ io.on('connection', function (socket) {
 
         db()
             .then(() => {
+
+                if (data.dateFrom) {
+                    data.timestamp = new Date(data.dateFrom);
+                }
 
                 Event.findOneAndUpdate({_id: ObjectId(data._id)}, data, {new: true}).then(function (newEvent) {
                     io.emit('retrieveEvent', {
