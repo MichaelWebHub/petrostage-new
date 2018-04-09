@@ -1,4 +1,5 @@
 const express = require('express');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const socket = require('socket.io');
 const {ObjectId} = require("mongodb");
@@ -18,6 +19,7 @@ const io = socket(server);
 // Middleware
 
 app.use(express.static('public'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
