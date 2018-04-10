@@ -52,7 +52,7 @@
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
-                                            <div class="ratings" ng-if="$ctrl.currentDate >= $ctrl.getEventDate(event)">
+                                            <div class="ratings">
                                                 <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
                                                     <div class="stars-outer">
                                                         <div class="stars-under">
@@ -62,7 +62,7 @@
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                         </div>
-                                                        <div class="stars-over" style="width: {{((event.rating.sum / event.rating.n)/5)*100}}%">
+                                                        <div class="stars-over" style="width: {{((event.rating.sum / event.rating.n)/5)*100}}%" ng-if="$ctrl.currentDate >= $ctrl.getEventDate(event)">
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
@@ -71,7 +71,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus">
+                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus && $ctrl.currentDate >= $ctrl.getEventDate(event)">
                                                     <div class="rating-stars">
                                                         <input type="radio" class="star-input" id="star-1" name="rating">
                                                         <label for="star-1" class="star-label" ng-click="$ctrl.rateEvent(1, event._id)">
