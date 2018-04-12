@@ -53,7 +53,8 @@
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
                                             <div class="ratings">
-                                                <div class="show-rating" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false">
+                                                <!-- ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false" -->
+                                                <div class="show-rating"  ng-mouseover="$ctrl.showRatingForm = true">
                                                     <div class="stars-outer">
                                                         <div class="stars-under">
                                                             <i class="fas fa-star"></i>
@@ -71,27 +72,27 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus && $ctrl.currentDate >= $ctrl.getEventDate(event)">
+                                                <form class="rating-form" ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) < 0 && $ctrl.currentUserStatus && $ctrl.currentDate >= $ctrl.getEventDate(event) && $ctrl.showRatingForm" ng-mouseleave="$ctrl.showRatingForm = false">
                                                     <div class="rating-stars">
                                                         <input type="radio" class="star-input" id="star-1" name="rating">
                                                         <label for="star-1" class="star-label" ng-click="$ctrl.rateEvent(1, event._id)">
-                                                            <i class="far fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </label>
                                                         <input type="radio" class="star-input" id="star-2" name="rating">
                                                         <label for="star-2" class="star-label" ng-click="$ctrl.rateEvent(2, event._id)">
-                                                            <i class="far fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </label>
                                                         <input type="radio" class="star-input" id="star-3" name="rating">
                                                         <label for="star-3" class="star-label" ng-click="$ctrl.rateEvent(3, event._id)">
-                                                            <i class="far fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </label>
                                                         <input type="radio" class="star-input" id="star-4" name="rating">
                                                         <label for="star-4" class="star-label" ng-click="$ctrl.rateEvent(4, event._id)">
-                                                            <i class="far fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </label>
                                                         <input type="radio" class="star-input" id="star-5" name="rating">
                                                         <label for="star-5" class="star-label" ng-click="$ctrl.rateEvent(5, event._id)">
-                                                            <i class="far fa-star border-star"></i>
+                                                            <i class="fas fa-star border-star"></i>
                                                         </label>
                                                     </div>
                                                 </form>

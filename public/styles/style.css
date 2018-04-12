@@ -348,7 +348,7 @@ a {
 }
 
 .user-email,
-.user-credits {
+.user-university {
     font-weight: 500;
     margin-top: 10px;
     font-size: 18px;
@@ -1179,14 +1179,19 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     width: 103px;
 }
 
+.border-star {
+    color: transparent;
+}
+
 .border-star:hover {
     cursor: pointer;
-    color: #FFA700;
+    color: #FF6F00;
 }
 
 .stars-outer {
     position: relative;
     width: 103px;
+    cursor: default;
 }
 
 .stars-under {
@@ -1196,6 +1201,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     white-space: nowrap;
     overflow: hidden;
     color: #B0BEC5;
+    cursor: default;
 }
 
 .stars-over {

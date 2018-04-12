@@ -6,6 +6,7 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.isEventRegistration = true;
     this.askForDeleteEvent = false;
     this.showEventWrapper = false;
+    this.showRatingForm = false;
 
     this.currentYear = (new Date()).getFullYear();
     this.currentDate = new Date();

@@ -1,4 +1,5 @@
 const EventEmitter = require('events');
+const helmet = require('helmet');
 const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
@@ -23,6 +24,7 @@ emitter.setMaxListeners(30);
 // Middleware
 
 app.use(express.static('public'));
+app.use(helmet());
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 app.use(function (req, res, next) {
