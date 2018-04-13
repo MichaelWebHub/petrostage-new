@@ -6,9 +6,11 @@ function contactInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
     this.emailStatus = false;
     this.emailResponse = "";
+    this.preloader = false;
 
     this.sendEmail = (e) => {
         e.preventDefault();
+        this.preloader = true;
 
         let name, email;
 
@@ -31,6 +33,7 @@ function contactInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
         mySocket.emit('sendEmail', messageBody);
         mySocket.on('sendEmailCb', (data) => {
+            this.preloader = false;
             this.emailStatus = data.status;
             this.emailResponse = data.text;
         });

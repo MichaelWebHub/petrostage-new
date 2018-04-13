@@ -29,6 +29,9 @@
             <div class="contact-form-content clearfix">
                 <textarea class="contact-form-textarea" autofocus placeholder="If you are logged in as guest, please start the message with your email." ng-model="$ctrl.contactMessage" ng-required="true"></textarea>
                 <input type="submit" class="contact-form-button" ng-disabled="contactForm.$invalid" value="Send" ng-click="$ctrl.sendEmail($event)">
+                <div class="preloader" ng-show="$ctrl.preloader">
+                    <div class="circle"></div>
+                </div>
             </div>
 
         </form>
