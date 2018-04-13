@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="151da795-419f-49c6-9be0-49e70282aefe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change beforePath="$PROJECT_DIR$/public/app/socket/socket.module.js" afterPath="$PROJECT_DIR$/public/app/socket/socket.module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/public/app/socket/socket.module.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+              <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -338,12 +336,12 @@
       <workItem from="1523460182514" duration="129000" />
       <workItem from="1523530170434" duration="3937000" />
       <workItem from="1523553514415" duration="605000" />
-      <workItem from="1523611071288" duration="14507000" />
+      <workItem from="1523611071288" duration="14550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185480000" />
+    <option name="totallyTimeSpent" value="185523000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -752,7 +750,7 @@
     <entry file="file://$PROJECT_DIR$/public/app/socket/socket.module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <caret line="5" column="65" lean-forward="false" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="65" />
           <folding />
         </state>
       </provider>
