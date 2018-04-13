@@ -269,7 +269,6 @@ io.on('connection', function (socket) {
             text: data.from.name + '\n\n' + data.from.email + '\n\n' + data.message
         };
 
-        console.log(text);
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
                 console.log(error);
