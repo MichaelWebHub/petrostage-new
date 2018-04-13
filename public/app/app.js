@@ -15,7 +15,6 @@ angular.module('app')
             // }
         });
 
-
         $transitions.onError({}, function (transition) {
             console.log("Transition from " + transition.from().name + " to " + transition.to().name + " failed. ");
         });

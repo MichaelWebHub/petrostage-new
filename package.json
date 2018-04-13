@@ -23,6 +23,7 @@
     "helmet": "^3.12.0",
     "mongodb": "^3.0.5",
     "mongoose": "^5.0.12",
+    "nodemailer": "^4.6.4",
     "oclazyload": "^1.1.0",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.0.4"

@@ -18,7 +18,7 @@
             <ul class="nav-menu">
                 <li class="nav-list"><a ui-sref="client.events" class="nav-link"> Events </a></li>
                 <li class="nav-list"><a ui-sref="client.about" class="nav-link"> About </a></li>
-                <li class="nav-list"><a href="#" class="nav-link"> Contacts </a></li>
+                <li class="nav-list"><a ui-sref="client.contact" class="nav-link"> Contacts </a></li>
             </ul>
         </nav>
         <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()" ng-if="$ctrl.currentUserStatus"> Log out</div>
@@ -34,7 +34,8 @@
 
 <div class="orders-panel">
     <div class="orders-panel-inner" ui-view>
-            <about-interface></about-interface>
-            <events-interface></events-interface>
+        <about-interface></about-interface>
+        <events-interface></events-interface>
+        <contact-interface></contact-interface>
     </div>
 </div>

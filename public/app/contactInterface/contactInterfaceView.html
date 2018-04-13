@@ -1,0 +1,33 @@
+<div class="contact">
+    <div class="contact-inner">
+
+        <form class="contact-form" name="contactForm" autocomplete="off" novalidate>
+
+            <div class="contact-form-row">
+                <div class="contact-form-col">
+                    <p class="contact-form-heading-icon"> <i class="fas fa-lightbulb"></i> </p>
+                    <h2 class="contact-form-heading"> Got new ideas? </h2>
+                </div>
+                <div class="contact-form-col">
+                    <p class="contact-form-heading-icon"> <i class="fas fa-bug"></i> </p>
+                    <h2 class="contact-form-heading"> Found a bug? </h2>
+                </div>
+                <div class="contact-form-col">
+                    <p class="contact-form-heading-icon"> <i class="fas fa-wrench"></i> </p>
+                    <h2 class="contact-form-heading"> Know how to improve something? </h2>
+                </div>
+                <div class="contact-form-col">
+                    <p class="contact-form-heading-icon"> <i class="fas fa-pencil-alt"></i> </p>
+                    <h2 class="contact-form-heading"> Let us know!</h2>
+                </div>
+            </div>
+
+            <div class="contact-form-content clearfix">
+                <textarea class="contact-form-textarea" autofocus placeholder="Message" ng-model="$ctrl.contactMessage" ng-required="true"></textarea>
+                <input type="submit" class="contact-form-button" ng-disabled="contactForm.$invalid" value="Send" ng-click="$ctrl.sendEmail($event)">
+            </div>
+
+        </form>
+
+    </div>
+</div>

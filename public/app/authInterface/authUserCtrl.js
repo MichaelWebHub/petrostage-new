@@ -54,5 +54,5 @@ function authUserCtrl(AuthService) {
 
 app.component('authUser', {
     controller: authUserCtrl,
-    templateUrl: './app/authUser/authUserView.html'
+    templateUrl: './app/authInterface/authUserView.html'
 });

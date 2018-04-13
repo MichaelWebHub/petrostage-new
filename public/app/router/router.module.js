@@ -21,6 +21,10 @@ angular.module('Router')
                 .state('client.about', {
                     url: 'about',
                     template: '<about-interface></about-interface>'
+                })
+                .state('client.contact', {
+                    url: 'contact',
+                    template: '<contact-interface></contact-interface>'
                 });
 
             $urlRouterProvider.otherwise('/');

@@ -4,6 +4,7 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const socket = require('socket.io');
+const nodemailer = require('nodemailer');
 const {ObjectId} = require("mongodb");
 const db = require('./database/connection');
 const mongoose = require('mongoose');
@@ -31,6 +32,12 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
+});
+
+// Get
+
+app.get('/*', function(req, res) {
+    res.redirect(req.baseUrl + '/');
 });
 
 // Socket
@@ -239,6 +246,37 @@ io.on('connection', function (socket) {
                     console.log(err.message);
                 });
             })
+
+    });
+
+
+    // send Email
+
+    socket.on('sendEmail', function(data) {
+        console.log(process.env);
+
+        const transporter = nodemailer.createTransport({
+            service: "Yandex",
+            auth: {
+                user: "michael.kutateladze@yandex.ru",
+                pass: process.env.MAIL_PASS
+            }
+        });
+
+        const mailOptions = {
+            from: "michael.kutateladze@yandex.ru",
+            to: "michael.kutateladze@yandex.ru",
+            subject: 'PetroStage contact form',
+            text: data.from.name + '\n\n' + data.from.email + '\n\n' + data.message
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
 
     });
 
