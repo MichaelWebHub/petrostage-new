@@ -263,33 +263,26 @@ io.on('connection', function (socket) {
             }
         });
 
-        let text;
-
-        if (data.from.email && data.from.name) {
-            text = data.from.name + '\n\n' + data.from.email + '\n\n' + data.message;
-        } else {
-            text = "From guest" + '\n\n' + data.message;
-        }
-
         const mailOptions = {
             from: "michael.kutateladze@yandex.ru",
             to: "michael.kutateladze@yandex.ru",
             subject: 'PetroStage contact form',
-            text: text
+            text: data.from.name + '\n\n' + data.from.email + '\n\n' + data.message
         };
 
+        console.log(text);
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
                 console.log(error);
                 socket.emit('sendEmailCb', {
-                    status: false,
+                    status: true,
                     text: "There was an error sending an email. If occurs again, please send email to michael.kutateladze@yandex.ru"
                 });
             } else {
                 console.log('Email sent: ' + info.response);
                 socket.emit('sendEmailCb', {
                     status: true,
-                    text: "Message sent. Have a nice day!"
+                    text: "Message has been sent. Have a nice day!"
                 });
             }
         });

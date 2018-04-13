@@ -10,10 +10,21 @@ function contactInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.sendEmail = (e) => {
         e.preventDefault();
 
+        let name, email;
+
+        if (this.currentUserStatus) {
+            name =  this.currentUser.name;
+            email = this.currentUser.email;
+        } else {
+            name = "Guest";
+            email = "Guest";
+        }
+
+
         const messageBody = {
             from: {
-                name: this.currentUser.name,
-                email: this.currentUser.email
+                name: name,
+                email: email
             },
             message: this.contactMessage
         };
