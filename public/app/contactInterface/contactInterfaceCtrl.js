@@ -4,6 +4,9 @@ function contactInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.currentUserStatus = AuthService.isLoggedIn().status;
     this.currentUser = AuthService.isLoggedIn().user;
 
+    this.emailStatus = false;
+    this.emailResponse = "";
+
     this.sendEmail = (e) => {
         e.preventDefault();
 
@@ -16,6 +19,10 @@ function contactInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         };
 
         mySocket.emit('sendEmail', messageBody);
+        mySocket.on('sendEmailCb', (data) => {
+            this.emailStatus = data.status;
+            this.emailResponse = data.text;
+        });
 
     }
 

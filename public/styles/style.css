@@ -1323,6 +1323,11 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     color: #fff;
 }
 
+.email-success {
+    margin-top: 80px;
+    font-size: 26px;
+}
+
 /* MEDIA */
 
 @media screen and (max-width: 1600px) {
