@@ -267,7 +267,7 @@ io.on('connection', function (socket) {
             from: "michael.kutateladze@yandex.ru",
             to: "michael.kutateladze@yandex.ru",
             subject: 'PetroStage contact form',
-            text: data.from.name + '\n\n' + data.from.email + '\n\n' + data.message
+            text: data.message
         };
 
         transporter.sendMail(mailOptions, function(error, info){
