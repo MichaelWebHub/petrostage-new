@@ -253,7 +253,6 @@ io.on('connection', function (socket) {
     // send Email
 
     socket.on('sendEmail', function(data) {
-        console.log(process.env);
 
         const transporter = nodemailer.createTransport({
             service: "Yandex",
