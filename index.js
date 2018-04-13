@@ -258,7 +258,7 @@ io.on('connection', function (socket) {
             service: "Yandex",
             auth: {
                 user: "michael.kutateladze@yandex.ru",
-                pass: process.env.MAIL_PASS
+                pass: "1256330_Co!n"//process.env.MAIL_PASS
             }
         });
 
