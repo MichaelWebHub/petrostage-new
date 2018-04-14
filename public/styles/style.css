@@ -284,6 +284,7 @@ a {
     /*width: 80%;*/
     /*margin-left: 20%;*/
     margin-left: 380px;
+    width: calc(100% - 380px);
     float: left;
     transition: 1s ease-out;
 }
@@ -1351,6 +1352,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .orders-panel {
         margin-left: 320px;
+        width: calc(100% - 320px);
     }
 
     .event-title {
@@ -1373,6 +1375,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .orders-panel {
         margin-left: 284px;
+        width: calc(100% - 284px);
     }
 
     .event-card-header {
@@ -1400,6 +1403,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .orders-panel {
         margin-left: 272px;
+        width: calc(100% - 272px);
     }
 
     .event-card-header {
@@ -1427,6 +1431,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .orders-panel {
         margin-left: 258px;
+        width: calc(100% - 258px);
     }
 
     .event-card {
@@ -1463,6 +1468,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
     .orders-panel {
         margin-left: 220px;
+        width: calc(100% - 220px);
     }
 
     .event-card-info, .event-card-description, .event-card-comments {
