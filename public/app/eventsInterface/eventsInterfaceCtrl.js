@@ -7,6 +7,7 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     this.askForDeleteEvent = false;
     this.showEventWrapper = false;
     this.showRatingForm = false;
+    this.showArchived = false;
 
     this.currentYear = (new Date()).getFullYear();
     this.currentDate = new Date();
@@ -24,26 +25,55 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         return new Date(event.dateFrom);
     };
 
+    this.expired = (event) => {
+        if (this.showArchived) {
+            return (new Date(event.dateTo) < this.currentDate);
+        } else {
+            return (new Date(event.dateTo) > this.currentDate);
+        }
+
+    };
+
+    this.showArchive = (event) => {
+        this.showArchived = !this.showArchived;
+        if (this.showArchived) {
+            event.currentTarget.classList.add('tool-button-active');
+        } else {
+            event.currentTarget.classList.remove('tool-button-active');
+        }
+    };
+
     this.currentUserStatus = AuthService.isLoggedIn().status;
     this.currentUser = AuthService.isLoggedIn().user;
 
     /* MENU FUNCTIONS */
 
-    this.toggleMenu = () => {
+    this.toggleMenu = (event) => {
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.toggle('enter');
         this.isEventRegistration = true;
+        this.showEventWrapper = !this.showEventWrapper;
+
+        if (this.showEventWrapper) {
+            event.currentTarget.classList.add('tool-button-active');
+        } else {
+            event.currentTarget.classList.remove('tool-button-active');
+        }
     };
 
     this.openMenu = () => {
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.add('enter');
         this.showEventWrapper = true;
+        this.showEventWrapper = false;
+
     };
 
     this.closeMenu = () => {
         const eventForm = document.querySelector('.new-event-wrapper');
+        const activeButton = document.querySelector('.add-new-order');
         eventForm.classList.remove('enter');
+        activeButton.classList.remove('tool-button-active');
         this.eventForm = {};
     };
 
@@ -112,8 +142,20 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         this.events.push(data.event);
     });
 
-    this.showMyEvents = () => {
-        this.filter.input = this.currentUser.email;
+    this.showMyEvents = (event) => {
+        if (this.filter.input === this.currentUser.email) {
+            this.filter.input = '';
+            event.currentTarget.classList.remove('tool-button-active');
+        } else {
+            this.filter.input = this.currentUser.email;
+            event.currentTarget.classList.add('tool-button-active');
+        }
+    };
+
+    this.clearFilter = () => {
+        this.filter.input = '';
+        const activeButton = document.querySelector('.show-my-events');
+        activeButton.classList.remove('tool-button-active');
     };
 
     // DELETE EVENT

@@ -243,7 +243,8 @@ a {
     top: 0;
     left: 0;
     height: 100%;
-    width: 20%;
+    /*width: 20%;*/
+    width: 380px;
     min-width: 220px;
     float: left;
     background: linear-gradient(to bottom, #4587D3, #78AAE5);
@@ -280,8 +281,9 @@ a {
 
 .orders-panel {
     height: 100%;
-    width: 80%;
-    margin-left: 20%;
+    /*width: 80%;*/
+    /*margin-left: 20%;*/
+    margin-left: 380px;
     float: left;
     transition: 1s ease-out;
 }
@@ -401,8 +403,8 @@ a {
 }
 
 .footer {
-    height: 250px;
-    margin-top: -250px;
+    height: 225px;
+    margin-top: -225px;
     text-align: center;
     color: #fff;
     cursor: default;
@@ -468,6 +470,12 @@ a {
     text-shadow: 1px 1px 1px #4E7DB5;
 }
 
+.tool-button-active {
+    background: #4E7DB5;
+    color: white;
+    text-shadow: 1px 1px 1px #4E7DB5;
+}
+
 /* Filter */
 
 
@@ -523,8 +531,9 @@ a {
     position: fixed;
     overflow-y: auto;
     top: 0;
-    right: -31%;
+    right: -60%;
     width: 30%;
+    min-width: 450px;
     height: 100vh;
     background: linear-gradient(to top, #26A69A, #4DB6AC);
     transition: 1s ease;
@@ -1336,6 +1345,14 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 /* MEDIA */
 
 @media screen and (max-width: 1600px) {
+    .admin-panel {
+        width: 320px;
+    }
+
+    .orders-panel {
+        margin-left: 320px;
+    }
+
     .event-title {
         font-size: 17px;
     }
@@ -1350,6 +1367,14 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 }
 
 @media screen and (max-width: 1440px) {
+    .admin-panel {
+        width: 284px;
+    }
+
+    .orders-panel {
+        margin-left: 284px;
+    }
+
     .event-card-header {
         padding: 7px 10px;
     }
@@ -1369,6 +1394,14 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 
 
 @media screen and (max-width: 1360px) {
+    .admin-panel {
+        width: 272px;
+    }
+
+    .orders-panel {
+        margin-left: 272px;
+    }
+
     .event-card-header {
         padding: 7px 5px;
     }
@@ -1388,25 +1421,24 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 }
 
 @media screen and (max-width: 1280px) {
-
-    .event-title {
-        font-size: 15px;
+    .admin-panel {
+        width: 258px;
     }
 
-    .event-card-button {
-        font-size: 14px;
+    .orders-panel {
+        margin-left: 258px;
     }
 
-    .event-card-row {
-        font-size: 14px;
+    .event-card {
+        width: 50%;
     }
+    .event-card-header {
+        padding: 7px 10px;
+    }
+
 
     .event-card-description {
-        font-size: 14px;
-    }
-
-    .comments-field {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .petrostage {
@@ -1414,23 +1446,23 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     }
 }
 
+@media screen and (max-width: 1220px) {
+    .filter {
+        width: 300px;
+    }
+}
 
 @media screen and (max-width: 1100px) {
-
-    .event-title {
-        font-size: 14px;
+    .admin-panel {
+        width: 220px;
     }
 
-    .event-card-button {
-        font-size: 14px;
+    .admin-panel-inner {
+        padding: 0 12px;
     }
 
-    .event-card-row {
-        font-size: 14px;
-    }
-
-    .event-card-description {
-        font-size: 13px;
+    .orders-panel {
+        margin-left: 220px;
     }
 
     .event-card-info, .event-card-description, .event-card-comments {
@@ -1446,11 +1478,8 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     }
 }
 
-@media screen and (max-width: 1024px) {
-    .event-card {
-        width: 50%;
-    }
 
+@media screen and (max-width: 1024px) {
     .filter {
         width: 380px;
     }
@@ -1492,6 +1521,7 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
     .petrostage-mobile {
         display: block;
     }
+
 }
 
 
@@ -1532,6 +1562,9 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
 }
 
 @media screen and (max-width: 450px) {
+    .orders-top {
+        padding: 0;
+    }
 
     .events-main {
         padding: 0;

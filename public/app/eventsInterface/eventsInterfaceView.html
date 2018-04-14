@@ -5,20 +5,21 @@
             <div class="filter-block">
                 <form class="filter-bar" ng-submit="$ctrl.filterEvents($ctrl.filter.input)" novalidate>
                     <input type="text" class="filter" ng-model="$ctrl.filter.input">
-                    <span class="new-comment-input-clear" ng-click="$ctrl.filter.input = ''"> <i class="far fa-times-circle"></i> </span>
+                    <span class="new-comment-input-clear" ng-click="$ctrl.clearFilter()"> <i class="far fa-times-circle"></i> </span>
                     <!--<button class="filter-search"> <i class="fas fa-search"></i> </button>-->
                 </form>
             </div>
             <!--<div class="tool-button"> Filters </div>-->
             <div class="tool-button add-new-order" ng-click="$ctrl.toggleMenu($event)" ng-if="$ctrl.currentUserStatus"> Add </div>
-            <div class="tool-button" ng-click="$ctrl.showMyEvents()" ng-if="$ctrl.currentUserStatus"> My Events </div>
+            <div class="tool-button show-my-events" ng-click="$ctrl.showMyEvents($event)" ng-if="$ctrl.currentUserStatus"> My Events </div>
+            <div class="tool-button show-archived-events" ng-click="$ctrl.showArchive($event)"> Archive </div>
 
         </div>
         <div class="events-main">
 
             <div class="events-main-inner clearfix">
 
-                <div class="event-card" ng-repeat="event in $ctrl.events | orderBy: 'timestamp' | filter: $ctrl.filter.input track by event._id">
+                <div class="event-card" ng-repeat="event in $ctrl.events | orderBy: 'timestamp' | filter: $ctrl.filter.input track by event._id" ng-if="$ctrl.expired(event)">
                     <div class="event-card-inner">
                         <div class="event-card-header background-{{event.type.toLowerCase()}}">
                             <h3 class="event-title"> {{event.title}}</h3>

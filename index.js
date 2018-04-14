@@ -20,7 +20,7 @@ const server = app.listen(port);
 const io = socket(server);
 
 const emitter = new EventEmitter();
-emitter.setMaxListeners(30);
+emitter.setMaxListeners(50);
 
 // Middleware
 
