@@ -58,7 +58,7 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         this.isEventRegistration = true;
         this.showEventWrapper = !this.showEventWrapper;
 
-        if (this.showEventWrapper) {
+        if (this.showEventWrapper && eventForm.classList.contains('enter')) {
             event.currentTarget.classList.add('tool-button-active');
         } else {
             event.currentTarget.classList.remove('tool-button-active');
@@ -66,11 +66,10 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     };
 
     this.openMenu = () => {
+        const activeButton = document.querySelector('.add-new-order');
         const eventForm = document.querySelector('.new-event-wrapper');
         eventForm.classList.add('enter');
         this.showEventWrapper = true;
-        this.showEventWrapper = false;
-
     };
 
     this.closeMenu = () => {
