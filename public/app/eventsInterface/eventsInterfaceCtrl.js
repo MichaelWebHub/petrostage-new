@@ -33,7 +33,7 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
         if (this.showArchived) {
             return (expireDay < this.currentDate);
         } else {
-            return (expireDay > this.currentDate);
+            return (expireDay >= this.currentDate);
         }
 
     };

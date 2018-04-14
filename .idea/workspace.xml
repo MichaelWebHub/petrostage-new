@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="151da795-419f-49c6-9be0-49e70282aefe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js" afterPath="$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js" />
-      <change beforePath="$PROJECT_DIR$/public/app/socket/socket.module.js" afterPath="$PROJECT_DIR$/public/app/socket/socket.module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eventsInterfaceCtrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="eventsInterfaceCtrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="35" column="31" lean-forward="false" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+              <caret line="35" column="32" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -68,7 +66,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="connection.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="connection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/connection.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -153,10 +151,10 @@
         <option value="$PROJECT_DIR$/public/app/contactInterface/contactInterfaceCtrl.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/public/styles/style.css" />
-        <option value="$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js" />
         <option value="$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceView.html" />
         <option value="$PROJECT_DIR$/public/app/socket/socket.module.js" />
         <option value="$PROJECT_DIR$/database/connection.js" />
+        <option value="$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js" />
       </list>
     </option>
   </component>
@@ -351,12 +349,12 @@
       <workItem from="1523611071288" duration="17539000" />
       <workItem from="1523692555084" duration="347000" />
       <workItem from="1523694285248" duration="19000" />
-      <workItem from="1523695605362" duration="5945000" />
+      <workItem from="1523695605362" duration="6068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194823000" />
+    <option name="totallyTimeSpent" value="194946000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -719,14 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="35" column="31" lean-forward="false" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -747,6 +737,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/eventsInterface/eventsInterfaceCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="35" column="32" lean-forward="false" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
           <folding />
         </state>
       </provider>
