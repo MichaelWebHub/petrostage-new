@@ -26,10 +26,14 @@ function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
     };
 
     this.expired = (event) => {
+        const lastDay = new Date(event.dateTo)
+        const expireDay = new Date(lastDay);
+        expireDay.setDate(lastDay.getDate() + 2);
+
         if (this.showArchived) {
-            return (new Date(event.dateTo) < this.currentDate);
+            return (expireDay < this.currentDate);
         } else {
-            return (new Date(event.dateTo) > this.currentDate);
+            return (expireDay > this.currentDate);
         }
 
     };
