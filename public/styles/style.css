@@ -1401,6 +1401,20 @@ md-datepicker.ng-touched.ng-invalid ~ .underline-inner {
         width: 272px;
     }
 
+    .user-name {
+        font-size: 18px;
+    }
+
+    .user-email,
+    .user-university,
+    .nav-link {
+        font-size: 16px;
+    }
+
+    .logout {
+        margin-top: 0;
+    }
+
     .orders-panel {
         margin-left: 272px;
         width: calc(100% - 272px);
