@@ -29,7 +29,7 @@
                             <ul class="event-card-buttons clearfix">
                                 <li class="event-card-button event-card-info-button event-button-color-{{event.type.toLowerCase()}} event-button-active" data-id="info" ng-click="$ctrl.switchCardInterface($event)"> Information </li>
                                 <li class="event-card-button event-card-description-button event-button-color-{{event.type.toLowerCase()}}" data-id="description" ng-click="$ctrl.switchCardInterface($event)"> Description </li>
-                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)"> Reviews </li>
+                                <li class="event-card-button event-card-comment-button event-button-color-{{event.type.toLowerCase()}}" data-id="comments" ng-click="$ctrl.switchCardInterface($event)" ng-if="false"> Reviews </li>
                             </ul>
 
                             <div class="event-card-long-row">
@@ -53,7 +53,7 @@
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.vk" href="{{event.vk}}"> <i class="fab fa-vk"></i> </a>
                                                 <a class="event-link social-link color-{{event.type.toLowerCase()}}" target="_blank" ng-if="event.instagram" href="{{event.instagram}}"> <i class="fab fa-instagram"></i> </a>
                                             </div>
-                                            <div class="ratings">
+                                            <div class="ratings" ng-if="false">
                                                 <!-- ng-if="event.rating.usersRated.indexOf($ctrl.currentUser._id) >= 0 || $ctrl.currentUserStatus === false" -->
                                                 <div class="show-rating"  ng-mouseover="$ctrl.showRatingForm = true">
                                                     <div class="stars-outer">
