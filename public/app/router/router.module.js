@@ -6,28 +6,29 @@ angular.module('Router')
         function config($stateProvider, $locationProvider, $urlRouterProvider) {
 
             $stateProvider
-                .state('auth', {
-                    url: '/auth',
-                    template: '<auth-user></auth-user>'
-                })
                 .state('client', {
                     url: '/',
+                    abstract: true,
                     template: '<client-interface></client-interface>'
                 })
+                .state('auth', {
+                    url: '^/auth',
+                    template: '<auth-user></auth-user>'
+                })
                 .state('client.events', {
-                    url: 'events',
+                    url: '^/events',
                     template: '<events-interface></events-interface>'
                 })
                 .state('client.about', {
-                    url: 'about',
+                    url: '^/about',
                     template: '<about-interface></about-interface>'
                 })
                 .state('client.contact', {
-                    url: 'contact',
+                    url: '^/contact',
                     template: '<contact-interface></contact-interface>'
                 });
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.when('/', 'events');
             $locationProvider.hashPrefix('');
             $locationProvider.html5Mode(true);
 

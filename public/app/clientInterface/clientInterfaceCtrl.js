@@ -5,6 +5,11 @@ function clientInterfaceCtrl($state, $transitions, AuthService, mySocket) {
 
     this.logout = () => {
         AuthService.logOut();
+        $state.go('auth');
+    };
+
+    this.login = () => {
+        $state.go('auth');
     };
 }
 

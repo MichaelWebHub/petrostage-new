@@ -13,7 +13,7 @@
                 <p class="user-name"> <span class="name-output"> Guest </span> </p>
             </div>
         </div>
-        <div ui-sref="auth" class="logout" ng-if="$ctrl.currentUserStatus === false"> Log in</div>
+        <div class="logout" ng-if="$ctrl.currentUserStatus === false" ng-click="$ctrl.login()"> Log in</div>
         <nav class="navigation">
             <ul class="nav-menu">
                 <li class="nav-list"><a ui-sref="client.events" class="nav-link"> Events </a></li>
@@ -21,7 +21,7 @@
                 <li class="nav-list"><a ui-sref="client.contact" class="nav-link"> Contacts </a></li>
             </ul>
         </nav>
-        <div ui-sref="auth" class="logout" ng-click="$ctrl.logout()" ng-if="$ctrl.currentUserStatus"> Log out</div>
+        <div class="logout" ng-click="$ctrl.logout()" ng-if="$ctrl.currentUserStatus"> Log out</div>
     </div>
     <footer class="footer">
 

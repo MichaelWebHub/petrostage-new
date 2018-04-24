@@ -2,7 +2,7 @@
     <h1 class="petrostage-heading"> PetroStage </h1>
 
     <div class="registration-inner">
-        <div class="registration-inner-animate login-form" ng-if="$ctrl.loginForm">
+        <div class="registration-inner-animate login-form" ng-if="!$ctrl.loginForm">
             <form class="registration-form" name="loginForm" action="#" method="post" novalidate autocomplete="off">
 
                 <div class="form-row">
@@ -39,7 +39,7 @@
             </form>
         </div>
 
-        <div class="registration-inner-animate signup-form" ng-if="!$ctrl.loginForm" >
+        <div class="registration-inner-animate signup-form" ng-if="$ctrl.loginForm" >
 
             <form class="registration-form" name="signupForm" action="#" method="post" novalidate autocomplete="off">
 

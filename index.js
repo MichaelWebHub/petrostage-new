@@ -18,6 +18,7 @@ const jsonParser = bodyParser.json();
 
 const server = app.listen(port);
 const io = socket(server);
+const jwt = require('jsonwebtoken');
 
 const emitter = new EventEmitter();
 emitter.setMaxListeners(50);
@@ -34,10 +35,80 @@ app.use(function (req, res, next) {
     next();
 });
 
+function verifyToken(req, res, next) {
+
+    const token = req.token || req.params.token || req.headers['x-access-token'];
+
+    if (token) {
+
+        // verifies secret and checks exp
+        jwt.verify(token, 'superSecret', function (err, decoded) {
+            if (err) {
+                return res.json({
+                    user: {},
+                    status: false
+                });
+            } else {
+                // if everything is good, save to request for use in other routes
+                req.decoded = decoded;
+                next();
+            }
+        });
+
+    } else {
+        // if there is no token
+        // return an error
+        return res.json({
+            user: {},
+            status: false
+        });
+    }
+}
+
 // Get
 
-app.get('/*', function(req, res) {
-    res.redirect(req.baseUrl + '/');
+app.get('/events', function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/about', function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/contact',  function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/check', verifyToken, function (req, res) {
+    const uemail = req.decoded.email;
+    db()
+        .then(() => {
+            User.findOne({email: uemail})
+                .then((result) => {
+                    if (result) {
+                        res.json({
+                            user: result,
+                            status: true
+                        })
+                    } else {
+                        res.json({
+                            user: {},
+                            status: false
+                        })
+                    }
+                })
+                .catch((err) => {
+                    res.json({
+                        user: {},
+                        status: false
+                    })
+                });
+        });
+});
+
+app.use(function(req, res, next) {
+    res.status(404);
+    res.sendFile(__dirname + '/public/404.html');
 });
 
 // Socket
@@ -55,9 +126,20 @@ io.on('connection', function (socket) {
                     .then(function (result) {
 
                         if (result[0].password === data.password && result[0].email === data.email) {
+
+                            const payload = {
+                                email: data.email,
+                                status: true
+                            };
+
+                            const token = jwt.sign(payload, 'superSecret', {
+                                expiresIn: 86400 // expires in 24 hours
+                            });
+
                             socket.emit('retrieveUserData', {
                                 user: result[0],
                                 status: true,
+                                token: token,
                                 message: 'You are now logging in'
                             });
                         } else {
@@ -111,9 +193,20 @@ io.on('connection', function (socket) {
 
                         user.save().then(function (newUser) {
                             console.log("A new user has been added to the database.");
+
+                            const payload = {
+                                email: user.email,
+                                status: true
+                            };
+
+                            const token = jwt.sign(payload, 'superSecret', {
+                                expiresIn: 86400 // expires in 24 hours
+                            });
+
                             socket.emit('retrieveUserData', {
                                 user: newUser,
                                 status: true,
+                                token: token,
                                 message: 'You have been registered'
                             })
                         }).catch(function (err) {

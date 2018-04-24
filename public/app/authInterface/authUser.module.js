@@ -17,11 +17,15 @@ angular.module('AuthUser')
                     user = data;
                     callback(user);
 
+                    if (data.token) {
+                        localStorage.token = data.token;
+                    }
+
                     if (data.status) {
                         // Animated interface switch and state change
                         uiService.hideRegistration()
                             .then(function () {
-                                $state.go('client');
+                                $state.go('client.events');
                             })
                     }
                 })
@@ -31,7 +35,7 @@ angular.module('AuthUser')
             loginAsGuest: function() {
                 uiService.hideRegistration()
                     .then(function () {
-                        $state.go('client');
+                        $state.go('client.events');
                     })
             },
 
@@ -42,13 +46,34 @@ angular.module('AuthUser')
                     user = data;
                     callback(user);
 
+                    if (data.token) {
+                        localStorage.token = data.token;
+                    }
+
                     if (data.status) {
                         // Animated interface switch and state change
                         uiService.hideRegistration()
                             .then(function () {
-                                $state.go('client');
+                                $state.go('client.events');
                             })
                     }
+                })
+            },
+
+            getSession: function() {
+                return new Promise((resolve, reject) => {
+                    fetch('/check', {
+                        method: 'get',
+                        headers: {
+                            "x-access-token": localStorage.getItem('token')
+                        }
+                    })
+                        .then(result => result.json())
+                        .then((data) => {
+                            user = data;
+                            resolve(user);
+                        })
+                        .catch((err) => console.log(err));
                 })
             },
 
@@ -57,6 +82,7 @@ angular.module('AuthUser')
             },
 
             logOut: function () {
+                localStorage.removeItem('token');
                 user = {
                     status: false
                 };
