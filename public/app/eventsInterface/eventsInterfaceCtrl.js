@@ -1,4 +1,5 @@
 function eventsInterfaceCtrl($state, $transitions, AuthService, mySocket) {
+    console.log(this);
 
     this.filter = {};
     this.eventForm = {};
